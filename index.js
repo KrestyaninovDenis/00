@@ -45,8 +45,10 @@ const user = await UserModule.create(data);
     const data = ({ email:'1' })
     const UserModule = require('./connectingBD/index').User;
     const user = await UserModule.create(data);
+    console.log(data);
+    console.log(user);
 })();
-console.log(data);
+
 
 /*
 1.1.2 Функция "Поиск пользователя по email"
