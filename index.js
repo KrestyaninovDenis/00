@@ -51,7 +51,8 @@ const fff = (async (req, res) => {
   const data = ({ email:'1' })
   const UserModule = require('./connectingBD/index').User;
   const user = await UserModule.create(data);
-  res.user;
+  console.log('c htpjkdt');
+  res(user);//resolve("result");
 })();
 console.log(fff);
 /*
