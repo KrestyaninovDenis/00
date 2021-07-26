@@ -20,17 +20,14 @@ const {Schema, model} = require('mongoose');
 const messageSchema = new Schema({
     author: {
         type: String, 
-        required: true,
         default: "",   
     },
     sentAt: {
         type: Date, 
-        required: true,
         default: "",   
     },    
     text: {
         type: String,
-        required: true,
         default: "",   
     },  
     readAt: {
