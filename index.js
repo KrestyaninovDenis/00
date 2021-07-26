@@ -41,19 +41,20 @@ const user = await UserModule.create(data);
 Результатом работы функции должен быть Promise, который резолвится с объектом модели User.
 */
 
-const fff = (async () => {
+const fff = async () => {// e,hfnm crj,rb
   try{
     const data = ({ email:'1' })
     const UserModule = require('./connectingBD/index').User;
     const user = await UserModule.create(data);
     console.log(user);
-    return;
+    return user;
   }
   catch {
     //обработка ошибок
   }
-})();
-console.log (fff+'99999999999999999999999');
+};
+fff().then(console.log);
+
 
 /*
 1.1.2 Функция "Поиск пользователя по email"
