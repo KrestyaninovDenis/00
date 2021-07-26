@@ -42,9 +42,10 @@ const user = await UserModule.create(data);
 */
 
 (async (req, res) => {
-        const newUser = new Book.User({ email:'1' });
-        //const user = await newUser.save();
-        const user = await Book.User.create({ email:'1' },{ email:'2' });
+const data = ({
+  email:'1',
+})
+        const user = await Book.User.create(data);
 })();
 //console.log(newUser);
 
