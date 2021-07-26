@@ -12,11 +12,19 @@ const Book = require('./connectingBD/index')
   });
 newTodo.save();
 
-const newTodo1 = new Book.Chat({
-  users:'1',
-  createdAt:'2'
-});
-newTodo1.save();
+
+const hhh = async (req, res) => {
+  const newTodo1 = new Book.Chat({
+    users:'1',
+    createdAt:'2'
+  });
+  try {
+      await newTodo1.save();
+      res.redirect('/book');
+  } catch (e) {
+      console.error(e);
+  }
+};
 
 //const BDs = require('./connectingBD/index')
 
