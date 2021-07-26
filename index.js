@@ -3,31 +3,16 @@ const app = express();
 
 
 const Book = require('./connectingBD/index');
-
-
-
-
-
+//создаём 4 базы на пробу
 (async () => {
-  const newAdvertisement = new Book.Advertisement({
-    shortText:'1',
-  });
+  const newAdvertisement = new Book.Advertisement({ shortText:'1' });
   await newAdvertisement.save();
-
-  const newChat = new Book.Chat({
-    users:'1',
-  });
-  await newChat.save();
-
-  const newMessage = new Book.Message({
-    author:'1',
-  });
-  await newMessage.save();
-
-  const newUser = new Book.User({
-    email:'1',
-  });
-  await newUser.save();
+    const newChat = new Book.Chat({ users:'1' });
+    await newChat.save();
+      const newMessage = new Book.Message({ author:'1' });
+      await newMessage.save();
+        const newUser = new Book.User({ email:'1' });
+        await newUser.save();
 })();
 /*
 async (req, res) => {
