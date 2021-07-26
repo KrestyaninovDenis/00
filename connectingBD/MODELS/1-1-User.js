@@ -16,19 +16,19 @@ contactPhone	string	    нет	                нет
 const {Schema, model} = require('mongoose');
 
 const userSchema = new Schema({
-    email0: {
+    email: {
         type: String, 
         default: "",   
     },
-    passwordHash0: {
+    passwordHash: {
         type: String, 
         default: "",   
     },    
-    name0: {
+    name: {
         type: String,
         default: "",   
     },    
-    contactPhone0: {
+    contactPhone: {
         type: String, 
         default: "",   
     },

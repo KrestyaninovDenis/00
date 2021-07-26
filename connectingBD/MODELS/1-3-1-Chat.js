@@ -17,12 +17,10 @@ const {Schema, model} = require('mongoose');
 const chatSchema = new Schema({
     users: {
         type: String, 
-        required: true,
         default: "",   
     },
     createdAt: {
         type: Date, 
-        required: true,
         default: "",   
     },    
     messages: {
