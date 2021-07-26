@@ -13,26 +13,6 @@ const Book = require('./connectingBD/index')
   await newAdvertisement.save();
 })();
 
-(async () => {
-  const newChat = new Book.Chat({
-    users:'1',
-  });
-  await newChat.save();
-})();
-
-(async () => {
-  const newMessage = new Book.Message({
-    author:'1',
-  });
-  await newMessage.save();
-})();
-
-(async () => {
-  const newUser = new Book.User({
-    email:'1',
-  });
-  await newUser.save();
-})();
 /*
 async (req, res) => {
   const newTodo1 = new Book.Chat({
