@@ -17,12 +17,12 @@ const user = await UserModule.create(data);
 */
 
 async (req, res) => {
-    const data = {
+    const data = new BDuser ({
         email           = 'email',
         passwordHash    = 'passwordHash',
         name            = 'name',
         contactPhone    = 'contactPhone',
-    };
+    });
     const UserModule = BDuser;
     try {
         const user = await UserModule.create(data);
