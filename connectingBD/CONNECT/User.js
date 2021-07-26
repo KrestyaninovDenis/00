@@ -15,4 +15,4 @@ const connect = mongoose.createConnection(HostDb, {
 });
 
 const schemes = require('../MODELS/index')
-module.exports = connect.model('User', schemes);
+module.exports = connect.model('User', schemes.User);
