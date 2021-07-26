@@ -6,16 +6,24 @@ const Book = require('./connectingBD/index')
 
 
 
-  const newTodo = new Book.User({
-    name:'1',
-    contactPhone:'2'
-  });
-newTodo.save();
-
 (async () => {
-  const newTodo1 = new Book.Chat({
+  const newTodo = new Book.Advertisement({
+    shortText:'1',
+  });
+  await newTodo.save();
+
+  const newTodo = new Book.Chat({
     users:'1',
-    createdAt:'2'
+  });
+  await newTodo1.save();
+
+  const newTodo1 = new Book.Message({
+    author:'1',
+  });
+  await newTodo1.save();
+
+  const newTodo1 = new Book.User({
+    email:'1',
   });
   await newTodo1.save();
 })();
