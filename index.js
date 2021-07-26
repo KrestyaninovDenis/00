@@ -45,7 +45,7 @@ const user = await UserModule.create(data);
         const newUser = new Book.User({ email:'1' });
         const user = await newUser.save();
 })();
-console.log(newUser);
+//console.log(newUser);
 
 /*
 1.1.2 Функция "Поиск пользователя по email"
