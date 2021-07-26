@@ -2,7 +2,7 @@ const express = require ('express');
 const app = express();
 
 
-const Book = require('./connectingBD/index')
+const Book = require('./connectingBD/index');
 
 
 
