@@ -2,11 +2,11 @@ const express = require ('express');
 const app = express();
 
 
-const Book = require('./connectingBD/CONNECT/User')
+const Book = require('./connectingBD/index')
 
 
 
-  const newTodo = new Book({
+  const newTodo = new Book.User({
     name0:'1',
     contactPhone0:'2'
   });

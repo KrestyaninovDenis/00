@@ -14,5 +14,5 @@ const connect = mongoose.createConnection(HostDb, {
     useUnifiedTopology: true,
 });
 
-const schemes = require('../MODELS/1-1-User')
+const schemes = require('../MODELS/index')
 module.exports = connect.model('User', schemes);
