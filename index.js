@@ -43,7 +43,7 @@ const user = await UserModule.create(data);
 
 (async (req, res) => {
     const data = ({ email:'1' })
-    const UserModule = require('./connectingBD/index').Book.User;
+    const UserModule = require('./connectingBD/index').User;
     const user = await UserModule.create(data);
 })();
 //console.log(newUser);
