@@ -26,6 +26,7 @@ async (req, res) => {
     const UserModule = BDuser;
     try {
         const user = await UserModule.create(data);
+        console.log(user);
     }
     catch (e) {
         console.error(e);
