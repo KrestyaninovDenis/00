@@ -18,10 +18,10 @@ const user = await UserModule.create(data);
 
 async (req, res) => {
     const data = new BDuser ({
-        email           = 'email',
-        passwordHash    = 'passwordHash',
-        name            = 'name',
-        contactPhone    = 'contactPhone',
+        email           : 'email',
+        passwordHash    : 'passwordHash',
+        name            : 'name',
+        contactPhone    : 'contactPhone',
     });
     const UserModule = BDuser;
     try {
