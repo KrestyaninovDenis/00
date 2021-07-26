@@ -12,8 +12,15 @@ const Book = require('./connectingBD/index')
   });
 newTodo.save();
 
-
-const hhh = async (req, res) => {
+(async () => {
+  const newTodo1 = new Book.Chat({
+    users:'1',
+    createdAt:'2'
+  });
+  await newTodo1.save();
+})();
+/*
+async (req, res) => {
   const newTodo1 = new Book.Chat({
     users:'1',
     createdAt:'2'
@@ -25,7 +32,7 @@ const hhh = async (req, res) => {
       console.error(e);
   }
 };
-
+*/
 //const BDs = require('./connectingBD/index')
 
 //const BDadve = BDs.Advertisement;
