@@ -40,20 +40,18 @@ const user = await UserModule.create(data);
 
 Результатом работы функции должен быть Promise, который резолвится с объектом модели User.
 */
-
-const fff = async () => {// e,hfnm crj,rb
+const createUser = async () => {
   try{
     const data = ({ email:'1' })
     const UserModule = require('./connectingBD/index').User;
     const user = await UserModule.create(data);
-    console.log(user);
     return user;
   }
   catch {
     //обработка ошибок
   }
 };
-fff().then(console.log);
+createUser().then(console.log);
 
 
 /*
