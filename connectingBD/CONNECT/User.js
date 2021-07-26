@@ -16,5 +16,5 @@ const connect = mongoose.createConnection(HostDb, {
     useCreateIndex: true,
 });
 
-const schemes = require('../MODELS/index')
-module.exports = connect.model('User', schemes.User);
+const schemes = require('../MODELS/1-1-User')
+module.exports = connect.model('User', schemes);
