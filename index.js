@@ -11,17 +11,23 @@ const Book = require('./connectingBD/index')
     shortText:'1',
   });
   await newAdvertisement.save();
+})();
 
+(async () => {
   const newChat = new Book.Chat({
     users:'1',
   });
   await newChat.save();
+})();
 
+(async () => {
   const newMessage = new Book.Message({
     author:'1',
   });
   await newMessage.save();
+})();
 
+(async () => {
   const newUser = new Book.User({
     email:'1',
   });
