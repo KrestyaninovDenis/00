@@ -50,7 +50,7 @@ const advertisementSchema = new Schema({
         default: "",   
     },    
     isDeleted: {
-        type: Boolean, 
+        type: String, 
         default: "",   
     },
 });
