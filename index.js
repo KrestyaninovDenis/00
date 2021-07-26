@@ -5,19 +5,13 @@ const app = express();
 const Book = require('./connectingBD/CONNECT/User')
 
 
-async (req, res) => {
 
   const newTodo = new Book({
     name0:'1',
     contactPhone0:'2'
   });
-  try {
-      await newTodo.save();
-      console.log (newTodo);
-  } catch (e) {
-      console.error(e);
-  }
-};
+newTodo.save();
+
 
 //const BDs = require('./connectingBD/index')
 
