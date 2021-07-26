@@ -7,25 +7,25 @@ const Book = require('./connectingBD/index')
 
 
 (async () => {
-  const newTodo = new Book.Advertisement({
+  const newAdvertisement = new Book.Advertisement({
     shortText:'1',
   });
-  await newTodo.save();
+  await newAdvertisement.save();
 
-  const newTodo = new Book.Chat({
+  const newChat = new Book.Chat({
     users:'1',
   });
-  await newTodo1.save();
+  await newChat.save();
 
-  const newTodo1 = new Book.Message({
+  const newMessage = new Book.Message({
     author:'1',
   });
-  await newTodo1.save();
+  await newMessage.save();
 
-  const newTodo1 = new Book.User({
+  const newUser = new Book.User({
     email:'1',
   });
-  await newTodo1.save();
+  await newUser.save();
 })();
 /*
 async (req, res) => {
