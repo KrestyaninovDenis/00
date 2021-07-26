@@ -11,8 +11,6 @@ const Book = require('./connectingBD/index');
     await newChat.save();
       const newMessage = new Book.Message({ author:'1' });
       await newMessage.save();
-        const newUser = new Book.User({ email:'1' });
-        await newUser.save();
 })();
 /*
 async (req, res) => {
@@ -43,7 +41,11 @@ const user = await UserModule.create(data);
 Результатом работы функции должен быть Promise, который резолвится с объектом модели User.
 */
 
-
+(async (req, res) => {
+        const newUser = new Book.User({ email:'1' });
+        const user = await newUser.save();
+})();
+console.log(user);
 
 /*
 1.1.2 Функция "Поиск пользователя по email"
