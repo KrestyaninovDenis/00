@@ -1,12 +1,12 @@
 const express = require ('express');
 const app = express();
 
-const BDs = require('./connectingBD/index')
+//const BDs = require('./connectingBD/index')
 
-const BDadve = BDs.Advertisement;
-const BDchat = BDs.Chat;
-const BDmess = BDs.Message;
-const BDuser = BDs.User;
+//const BDadve = BDs.Advertisement;
+//const BDchat = BDs.Chat;
+//const BDmess = BDs.Message;
+//const BDuser = BDs.User;
 
 /*
 1.1.1 Функция "Создание пользователя"
@@ -16,22 +16,32 @@ const user = await UserModule.create(data);
 Результатом работы функции должен быть Promise, который резолвится с объектом модели User.
 */
 
-async (req, res) => {
-    const data = new BDuser ({
-        email           : 'email',
-        passwordHash    : 'passwordHash',
-        name            : 'name',
-        contactPhone    : 'contactPhone',
-    });
-    const UserModule = BDuser;
-    try {
-        const user = await UserModule.create(data);
-        console.log(user);
-    }
-    catch (e) {
-        console.error(e);
-    }
-};
+
+
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+  
+// установка схемы
+const userScheme = new Schema({
+    name: String,
+    age: Number
+});
+  
+// подключение
+mongoose.connect("mongodb://localhost:27017/usersdb", { useUnifiedTopology: true, useNewUrlParser: true });
+  
+const User = mongoose.model("User", userScheme);
+const user = new User({
+    name: "Bill",
+    age: 41
+});
+  
+user.save(function(err){
+    mongoose.disconnect();  // отключение от базы данных
+      
+    if(err) return console.log(err);
+    console.log("Сохранен объект", user);
+});
 
 /*
 1.1.2 Функция "Поиск пользователя по email"
