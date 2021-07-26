@@ -6,11 +6,9 @@ const Book = require('./connectingBD/CONNECT/User')
 
 
 async (req, res) => {
-  const {name='1',
-    contactPhone='2',
-    };
+
   const newTodo = new Book({
-    name, contactPhone
+    name:'1', contactPhone:'2'
   });
   try {
       await newTodo.save();
