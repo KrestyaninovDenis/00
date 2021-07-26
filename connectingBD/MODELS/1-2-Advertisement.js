@@ -31,11 +31,11 @@ const advertisementSchema = new Schema({
         default: "",   
     },    
     images: {
-        type: Object,
+        type: String,
         default: "",   
     },    
     userId: {
-        type: ObjectID, 
+        type: String, 
         required: true,
         default: "",   
     },

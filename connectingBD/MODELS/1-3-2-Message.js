@@ -19,7 +19,7 @@ const {Schema, model} = require('mongoose');
 
 const messageSchema = new Schema({
     author: {
-        type: ObjectID, 
+        type: String, 
         required: true,
         default: "",   
     },
