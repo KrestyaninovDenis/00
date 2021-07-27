@@ -18,14 +18,18 @@ const {Schema, model} = require('mongoose');
 const userSchema = new Schema({
     email: {
         type: String, 
+        required: true,
+        unique: true,
         default: "",   
     },
     passwordHash: {
         type: String, 
+        required: true,
         default: "",   
     },    
     name: {
         type: String,
+        required: true,
         default: "",   
     },    
     contactPhone: {
