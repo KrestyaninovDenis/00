@@ -31,7 +31,7 @@ const advertisementSchema = new Schema({
         default: "",   
     },    
     images: {
-        type: [],
+        type: Array,
         default: ['1','2','3'],   
     },    
     userId: {
