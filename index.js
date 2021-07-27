@@ -42,6 +42,18 @@ const user = await UserModule.create(data);
 
 Результатом работы функции должен быть Promise, который резолвится с объектом модели User.
 */
+const findUser = async (email) => {
+  try{
+    const UserModule = require('./connectingBD/index').User;
+    const user = await UserModule.findByEmail(email);
+    return user;
+  }
+  catch {
+    //обработка ошибок
+  }
+};
+const email = '12'
+findUser(email).then(console.log);
 
 const createUser = async (data) => {
   try{
@@ -64,18 +76,7 @@ const user = await UserModule.findByEmail(email);
 Результатом работы функции должен быть Promise, который резолвится объектом модели User или null, 
 если пользователь не существует.
 */
-const findUser = async (email) => {
-  try{
-    const UserModule = require('./connectingBD/index').User;
-    const user = await UserModule.findByEmail(email);
-    return user;
-  }
-  catch {
-    //обработка ошибок
-  }
-};
-const email = '12'
-findUser(email).then(console.log);
+
 /*
 const user = await User.findByEmail({ email });
 if (!user) {
