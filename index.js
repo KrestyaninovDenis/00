@@ -52,9 +52,9 @@ const createUser = async (data) => {
     //обработка ошибок
   }
 };
-const data = ({ email:'1' })
-const x = createUser(data).then();
-console.log(x);
+const data5 = ({ email:'1' })
+createUser({ email:'1' }).then(console.log);
+
 
 
 /*
