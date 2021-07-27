@@ -11,6 +11,8 @@ const Book = require('./connectingBD/index');
     await newChat.save();
       const newMessage = new Book.Message({ author:'1' });
       await newMessage.save();
+        const newUser = new Book.User({ email:'12' });
+        await newUser.save();
 })();
 /*
 async (req, res) => {
@@ -72,7 +74,7 @@ const findUser = async (email) => {
     //обработка ошибок
   }
 };
-const email = '1'
+const email = '12'
 findUser(email).then(console.log);
 /*
 const user = await User.findByEmail({ email });
