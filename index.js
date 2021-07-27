@@ -19,7 +19,7 @@ const createUser = async (data) => {
     //обработка ошибок
   }
 };
-const data = ({ email:'1' })
+const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'})
 createUser(data).then(console.log);
 
 /*
@@ -33,15 +33,16 @@ const user = await UserModule.findByEmail(email);
 
 const findUser = async (email) => {
   try{
+    const emailBD = ({ email:email })
     const UserModule = require('./connectingBD/index').User;
-    const user = await UserModule.findOne(email);
+    const user = await UserModule.findOne(emailBD);
     return user;
   }
   catch {
     //обработка ошибок
   }
 };
-const email = ({ email:'1' })
+const email = '1'
 findUser(email).then(console.log);
 
 
