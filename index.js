@@ -52,7 +52,7 @@ const findUser = async (email) => {
     //обработка ошибок
   }
 };
-const email = '12'
+const email = '1'
 findUser(email).then(console.log);
 
 const createUser = async (data) => {
