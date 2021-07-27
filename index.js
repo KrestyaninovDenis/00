@@ -56,7 +56,7 @@ const createUser = async (data) => {
 const data = ({ email:'1' })
 createUser(data).then(console.log);
 */
-const createUser = require('./USER/index').fcreate
+const createUser = require('./USER/index').createUser
 const data = ({ email:'1' })
 createUser(data).then(console.log);
 /*
@@ -81,7 +81,7 @@ const findUser = async (email) => {
 const email = ({ email:'1' })
 findUser(email).then(console.log);
 */
-const findUser = require('./USER/index').ffind
+const findUser = require('./USER/index').findUser
 const email = ({ email:'1' })
 findUser(email).then(console.log);
 /*
