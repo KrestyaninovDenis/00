@@ -30,7 +30,10 @@ const advertisementSchema = new Schema({
         type: String, 
         default: "",   
     },    
-    images: [String],    
+    images: {
+        type: [String],
+        default: ['1','2','3'],
+    },
     userId: {
         type: String,
         required: true,
