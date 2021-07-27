@@ -53,7 +53,8 @@ const createUser = async (data) => {
   }
 };
 const data = ({ email:'1' })
-createUser(data).then(console.log);
+const x = createUser(data).then();
+console.log(x);
 
 
 /*
