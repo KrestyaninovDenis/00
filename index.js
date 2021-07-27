@@ -42,8 +42,10 @@ const findUser = async (email) => {
     //обработка ошибок
   }
 };
-const email = '1'
+const email = '18'
 findUser(email).then(console.log);
+
+
 
 
 const PORT = process.env.PORT || 3000;
