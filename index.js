@@ -42,8 +42,47 @@ const findUser = async (email) => {
     //обработка ошибок
   }
 };
-const email = '18'
+const email = '1'
 findUser(email).then(console.log);
+
+/*
+1.2.2 Создание объявления
+const advertisement = await Advertisement.create(data);
+Аргумент data должны соответствовать полям модели Advertisement, кроме _id.
+
+Результатом работы функции должен быть Promise, который резолвится с объектом модели Advertisement.
+*/
+
+const createAdvertisement = async (data) => {
+  try{
+    const AdvertisementModule = require('./connectingBD/index').Advertisement;
+    const advertisement = await AdvertisementModule.create(data);
+    return advertisement;
+  }
+  catch {
+    //обработка ошибок
+  }
+};
+const data = ({ 
+/*
+название	    тип	        обязательное	  уникальное
+shortText	    string	    да	            нет
+description	  string	    нет	            нет
+images	      string[]	  нет	            нет
+userId	      ObjectId	  да	            нет
+createdAt	    Date	      да	            нет
+updatedAt	    Date	      да	            нет
+tags	        string[]	  нет	            нет
+isDeleted	    boolean	    да	            нет
+*/
+shortText: '1',
+description: '2',
+images: '3',
+userId: '4',
+tags: '5',
+isDeleted: false,
+})
+createAdvertisement(data).then(console.log);
 
 
 
