@@ -39,11 +39,11 @@ const advertisementSchema = new Schema({
     },
     createdAt: {
         type: Date, 
-        default: "",   
+        default: Date,   
     },
     updatedAt: {
         type: Date,  
-        default: "",   
+        default: Date,   
     },    
     tags: {
         type: String,
