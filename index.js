@@ -63,7 +63,7 @@ const createAdvertisement = async (data) => {
     //обработка ошибок
   }
 };
-const data = ({ 
+const dataA = ({ 
 /*
 название	    тип	        обязательное	  уникальное
 shortText	    string	    да	            нет
@@ -82,7 +82,7 @@ userId: '4',
 tags: '5',
 isDeleted: false,
 })
-createAdvertisement(data).then(console.log);
+createAdvertisement(dataA).then(console.log);
 
 
 
