@@ -43,7 +43,6 @@ const user = await UserModule.create(data);
 
 const createUser = async (data) => {
   try{
-    
     const UserModule = require('./connectingBD/index').User;
     const user = await UserModule.create(data);
     return user;
@@ -52,10 +51,8 @@ const createUser = async (data) => {
     //обработка ошибок
   }
 };
-const data5 = ({ email:'1' })
-createUser({ email:'1' }).then(console.log);
-
-
+const data = ({ email:'1' })
+createUser(data).then(console.log);
 
 /*
 1.1.2 Функция "Поиск пользователя по email"
@@ -65,6 +62,18 @@ const user = await UserModule.findByEmail(email);
 Результатом работы функции должен быть Promise, который резолвится объектом модели User или null, 
 если пользователь не существует.
 */
+const findUser = async (email) => {
+  try{
+    const UserModule = require('./connectingBD/index').User;
+    const user = await UserModule.findByEmail(email);
+    return user;
+  }
+  catch {
+    //обработка ошибок
+  }
+};
+const email = ({ email:'1' })
+findUser(email).then(console.log);
 /*
 const user = await User.findByEmail({ email });
 if (!user) {
