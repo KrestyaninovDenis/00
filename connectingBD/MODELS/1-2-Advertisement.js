@@ -23,6 +23,7 @@ const {Schema, model} = require('mongoose');
 const advertisementSchema = new Schema({
     shortText: {
         type: String, 
+        required: true,
         default: "",   
     },
     description: {
@@ -34,15 +35,18 @@ const advertisementSchema = new Schema({
         default: "",   
     },    
     userId: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        required: true,
         default: "",
     },
     createdAt: {
         type: Date, 
+        required: true,
         default: Date,   
     },
     updatedAt: {
         type: Date,  
+        required: true,
         default: Date,   
     },    
     tags: {
@@ -51,7 +55,8 @@ const advertisementSchema = new Schema({
     },    
     isDeleted: {
         type: Boolean, 
-        default: "",   
+        required: true,
+        default: false,   
     },
 });
 
