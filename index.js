@@ -1,40 +1,6 @@
 const express = require ('express');
 const app = express();
 
-
-const Book = require('./connectingBD/index');
-//создаём 4 базы на пробу
-(async () => {
-  const newAdvertisement = new Book.Advertisement({ shortText:'1' });
-  await newAdvertisement.save();
-    const newChat = new Book.Chat({ users:'1' });
-    await newChat.save();
-      const newMessage = new Book.Message({ author:'1' });
-      await newMessage.save();
-        const newUser = new Book.User({ email:'12' });
-        await newUser.save();
-})();
-/*
-async (req, res) => {
-  const newTodo1 = new Book.Chat({
-    users:'1',
-    createdAt:'2'
-  });
-  try {
-      await newTodo1.save();
-      res.redirect('/book');
-  } catch (e) {
-      console.error(e);
-  }
-};
-*/
-//const BDs = require('./connectingBD/index')
-
-//const BDadve = BDs.Advertisement;
-//const BDchat = BDs.Chat;
-//const BDmess = BDs.Message;
-//const BDuser = BDs.User;
-
 /*
 1.1.1 Функция "Создание пользователя"
 const user = await UserModule.create(data);
@@ -42,7 +8,7 @@ const user = await UserModule.create(data);
 
 Результатом работы функции должен быть Promise, который резолвится с объектом модели User.
 */
-/*
+
 const createUser = async (data) => {
   try{
     const UserModule = require('./connectingBD/index').User;
@@ -55,10 +21,7 @@ const createUser = async (data) => {
 };
 const data = ({ email:'1' })
 createUser(data).then(console.log);
-*/
-const createUser = require('./USER/index').createUser
-const data = ({ email:'1' })
-createUser(data).then(console.log);
+
 /*
 1.1.2 Функция "Поиск пользователя по email"
 const user = await UserModule.findByEmail(email);
@@ -67,7 +30,7 @@ const user = await UserModule.findByEmail(email);
 Результатом работы функции должен быть Promise, который резолвится объектом модели User или null, 
 если пользователь не существует.
 */
-/*
+
 const findUser = async (email) => {
   try{
     const UserModule = require('./connectingBD/index').User;
@@ -80,50 +43,6 @@ const findUser = async (email) => {
 };
 const email = ({ email:'1' })
 findUser(email).then(console.log);
-*/
-const findUser = require('./USER/index').findUser
-const email = ({ email:'1' })
-findUser(email).then(console.log);
-/*
-const user = await User.findByEmail({ email });
-if (!user) {
- console.log('USER DOES NOT EXIST');
-}
-*/
-
-/*
-2.1 Регистрация
-POST /api/signup — зарегистрироваться
-
-Пароль не должен храниться в чистом виде. Его перед отправкой в модуль "Пользователи" нужно хешировать.
-
-Формат данных при отправке json-объект. Пример запроса:
-
-{
-  "email": "kulagin@netology.ru",
-  "password": "ad service",
-  "name": "Alex Kulagin",
-  "contactPhone": "+7 123 456 78 90"
-}
-В ответ приходит либо сообщение об ошибке, либо JSON-объект с данными:
-
-{
-  "data": {
-    "id": "507f1f77bcf86cd799439011",
-    "email": "kulagin@netology.ru",
-    "name": "Alex Kulagin",
-    "contactPhone": "+7 123 456 78 90"
-  },
-  "status": "ok"
-}
-{
-  "error": "email занят",
-  "status": "error"
-}
-2.2 Аутентификация
-POST /api/signin — залогиниться
-*/
-
 
 
 const PORT = process.env.PORT || 3000;
