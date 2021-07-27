@@ -45,14 +45,14 @@ const user = await UserModule.create(data);
 const findUser = async (email) => {
   try{
     const UserModule = require('./connectingBD/index').User;
-    const user = await UserModule.findByEmail(email);
+    const user = await UserModule.findOne(email);
     return user;
   }
   catch {
     //обработка ошибок
   }
 };
-const email = '1'
+const email = ({ email:'1' })
 findUser(email).then(console.log);
 
 const createUser = async (data) => {
