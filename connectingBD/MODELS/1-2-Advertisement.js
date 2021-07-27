@@ -35,7 +35,7 @@ const advertisementSchema = new Schema({
     },    
     userId: {
         type: mongoose.Schema.Types.ObjectId, 
-        default: "88888",   
+           
     },
     createdAt: {
         type: Date, 
