@@ -72,7 +72,7 @@ const findUser = async (email) => {
     //обработка ошибок
   }
 };
-const email = ({ email:'1' })
+const email = '1'
 findUser(email).then(console.log);
 /*
 const user = await User.findByEmail({ email });
