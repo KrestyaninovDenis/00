@@ -31,24 +31,24 @@ const advertisementSchema = new Schema({
         default: "",   
     },    
     images: {
-        type: String, 
-        default: "", 
+        type: [String], 
+        default: [], 
     },
     userId: {
         type: String, 
     //    required: true,
         default: "", 
     },
-    //createdAt: {
-    //    type: Date, 
+    createdAt: {
+        type: Date, 
     //    required: true,
-    //    default: Date,   
-    //},
-    //updatedAt: {
-    //    type: Date,  
+        default: Date,   
+    },
+    updatedAt: {
+        type: Date,  
     //    required: true,
-    //    default: Date,   
-    //},    
+        default: Date,   
+    },    
     tags: {
         type: String,
         default: "",   

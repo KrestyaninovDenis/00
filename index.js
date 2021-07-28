@@ -70,7 +70,7 @@ const createAdvertisement = async (dataA) => {
 const dataA = ({ 
 shortText: '1',
 description: '2',
-images: '3',
+images: [3],
 userId: '4',
 createdAt: Date,
 updatedAt: Date,
@@ -102,9 +102,7 @@ const findAdvertisement = async (params) => {
     params.isDeleted = false;
 
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
-    if (shortText in params) {
     const advertisements = await AdvertisementModule.find(params);
-    }
     return advertisements;
   }
   catch {
