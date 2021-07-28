@@ -44,11 +44,11 @@ const advertisementSchema = new Schema({
     //    required: true,
         default: Date,   
     },
-    //updatedAt: {
-    //    type: Date,  
+    updatedAt: {
+        type: Date,  
     //    required: true,
-    //    default: Date,   
-    //},    
+        default: Date,   
+    },    
     tags: {
         type: [String],
         default: [],   
