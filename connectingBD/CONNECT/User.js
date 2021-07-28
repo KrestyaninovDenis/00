@@ -12,6 +12,8 @@ const connect = mongoose.createConnection(HostDb, {
     dbName: NameDB,
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
 });
 
 const schemes = require('../MODELS/index')
