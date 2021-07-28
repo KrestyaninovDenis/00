@@ -53,10 +53,10 @@ const advertisement = await Advertisement.create(data);
 Результатом работы функции должен быть Promise, который резолвится с объектом модели Advertisement.
 */
 
-const createAdvertisement = async (data) => {
+const createAdvertisement = async (dataA) => {
   try{
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
-    const advertisement = await AdvertisementModule.create(data);
+    const advertisement = await AdvertisementModule.create(dataA);
     return advertisement;
   }
   catch {
@@ -100,7 +100,7 @@ tags - значение в БД должно включать все иском�
 Результатом работы функции должен быть Promise, который резолвится массивом объектов модели Advertisement 
 или пустым массивом.
 */
-/*
+
 const findAdvertisement = async (params) => {
   try{
 
@@ -124,7 +124,7 @@ const params = ({
   })
 findAdvertisement(params).then(console.log);
 
-*/
+
 
 
 
