@@ -99,7 +99,7 @@ const findAdvertisement = async (params) => {
 
     //if ('shortText' in params) { shortText = '{$regex: /'+shortText+'/}' };
     //if ('description' in params) { description = '{$regex: /'+description+'/}' };
-    //params.isDeleted = false;
+    params.isDeleted = false;
 
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
     const advertisements = await AdvertisementModule.find(params);
