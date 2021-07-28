@@ -77,12 +77,76 @@ isDeleted	    boolean	    да	            нет
 */
 shortText: '1',
 description: '2',
+images: '3',
+userId: '4',
 createdAt: Date,
 updatedAt: Date,
 tags: '5',
 isDeleted: false,
 })
 createAdvertisement(dataA).then(console.log);
+
+/*
+1.2.1 Функция "Поиск объявления"
+const advertisements = await Advertisement.find(params);
+В объекте params должны учитываться следующие поля:
+
+shortText - поиск регулярным выражением
+description - поиск регулярным выражением
+userId - точное совпадение
+tags - значение в БД должно включать все искомые значения
+Поиск должен игнорировать записи, которые помечены удаленными isDeleted = true.
+
+Результатом работы функции должен быть Promise, который резолвится массивом объектов модели Advertisement 
+или пустым массивом.
+*/
+
+const findAdvertisement = async (params) => {
+  try{
+
+    if ('shortText' in params) { shortText = '{$regex: /'+shortText+'/}' };
+    if ('description' in params) { description = '{$regex: /'+description+'/}' };
+    params.isDeleted = false;
+
+    const AdvertisementModule = require('./connectingBD/index').Advertisement;
+    const advertisements = await AdvertisementModule.find(params);
+    return advertisements;
+  }
+  catch {
+    //обработка ошибок
+  }
+};
+const params = ({ 
+  shortText:    '1',
+  description:  '2',
+  userId:       '4',
+  tags:         '5',
+  })
+findAdvertisement(params).then(console.log);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

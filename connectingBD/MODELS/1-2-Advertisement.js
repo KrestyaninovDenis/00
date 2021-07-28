@@ -31,12 +31,13 @@ const advertisementSchema = new Schema({
         default: "",   
     },    
     images: {
-        type: [String],
-        default: [],
+        type: String, 
+        default: "", 
     },
     userId: {
-        type: String,
+        type: String, 
         required: true,
+        default: "", 
     },
     createdAt: {
         type: Date, 
