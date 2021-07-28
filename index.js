@@ -74,7 +74,7 @@ images: ['3'],
 userId: '4',
 createdAt: new Date(),
 updatedAt: new Date(),
-tags: ['5','6','7'],
+tags: ['5','6'],
 isDeleted: false,
 });
 createAdvertisement(dataA).then(console.log);
@@ -123,10 +123,10 @@ const advertisement = await Advertisement.remove(id);
 
 Функция поиска не должна удалять запись из БД, а только выставлять значение флага isDeleted = true.
 */
-/*
+
 const dataA1 = ({ 
-  shortText: 'fff',
-  description: 'ttt',
+  shortText: '11122',
+  description: '22223333',
   images: ['3'],
   userId: '4',
   createdAt: new Date(),
@@ -135,7 +135,7 @@ const dataA1 = ({
   isDeleted: false,
   })
   createAdvertisement(dataA1).then(console.log);
-*/
+
 
 
 
