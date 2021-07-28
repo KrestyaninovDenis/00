@@ -50,8 +50,8 @@ const advertisementSchema = new Schema({
     //    default: Date,   
     //},    
     tags: {
-        type: String,
-        default: "",   
+        type: [String],
+        default: [],   
     },    
     isDeleted: {
         type: Boolean, 
