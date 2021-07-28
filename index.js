@@ -124,10 +124,10 @@ const advertisement = await Advertisement.remove(id);
 Функция поиска не должна удалять запись из БД, а только выставлять значение флага isDeleted = true.
 */
 
-const find_id_Advertisement = async (params) => {
+const find_id_Advertisement = async (id) => {
   try{
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
-    const advertisements = await AdvertisementModule.findOne(params);
+    const advertisements = await AdvertisementModule.findOne(id);
     advertisements.isDeleted = true;
     return advertisements;
   }
@@ -136,7 +136,7 @@ const find_id_Advertisement = async (params) => {
   }
 };
 
-const params = ({ 
+const id = ({ 
 //  _id:    'xxx',  //ищем по _id
   description:  '2', //для пробы первое совпадение
   });
