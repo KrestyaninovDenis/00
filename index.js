@@ -74,7 +74,7 @@ images: ['3'],
 userId: '4',
 createdAt: new Date(),
 updatedAt: new Date(),
-tags: ['5'],
+tags: ['5','6'],
 isDeleted: false,
 });
 createAdvertisement(dataA).then(console.log);
@@ -112,7 +112,7 @@ const params = ({
   shortText:    '1',
   description:  '2',
   userId:       '4',
-  tags:         ['5'],
+  tags:         ['5','6'],
   });
 findAdvertisement(params).then(console.log);
 
