@@ -148,10 +148,9 @@ const find_id_Advertisement = async (id) => {
   }
 };
 
-const id = ({ 
+const id = '2'
 //  _id:    'xxx',  //ищем по _id
-  description:  '2', //для пробы первое совпадение
-  });
+//  description:  '2', //для пробы первое совпадение
 find_id_Advertisement(params).then(console.log);
 
 
