@@ -127,8 +127,8 @@ const advertisement = await Advertisement.remove(id);
 const find_id_Advertisement = async (id) => {
   try{
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
-    const advertisements = await AdvertisementModule.findOne(id);
-    advertisements.isDeleted = true;
+    //description:id => _id:id
+    const advertisements = await AdvertisementModule.findOneAndUpdate({description:id},{ $set: {isDeleted: true}},);
     return advertisements;
   }
   catch {
