@@ -55,7 +55,7 @@ const advertisement = await Advertisement.create(data);
 
 
 
-/*
+
 const createAdvertisement = async (dataA) => {
   try{
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
@@ -78,7 +78,7 @@ tags: '5',
 isDeleted: false,
 })
 createAdvertisement(dataA).then(console.log);
-*/
+
 /*
 1.2.1 Функция "Поиск объявления"
 const advertisements = await Advertisement.find(params);
