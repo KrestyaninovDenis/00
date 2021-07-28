@@ -113,7 +113,7 @@ const params = ({
   shortText:    '1',
   description:  '2',
   userId:       '4',
-  tags:         ['5'],
+  tags:         ['5','6','7'],
   })
 findAdvertisement(params).then(console.log);
 
