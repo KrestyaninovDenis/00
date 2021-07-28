@@ -140,7 +140,7 @@ const find_id_Advertisement = async (id) => {
   try{
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
     //description:id => _id:id
-    const advertisements = await AdvertisementModule.findOneAndUpdate(id,{ $set: {isDeleted: true}},);
+    const advertisements = await AdvertisementModule.findOneAndUpdate(id,{ $set: {isDeleted: true}}, {returnOriginal: false},);
     return advertisements;
   }
   catch {
