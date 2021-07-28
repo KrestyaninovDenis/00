@@ -68,13 +68,13 @@ const createAdvertisement = async (dataA) => {
 };
 
 const dataA = ({ 
-shortText: '1',
-description: '2',
+shortText: '11111',
+description: '22222',
 images: ['3'],
 userId: '4',
 createdAt: new Date(),
 updatedAt: new Date(),
-tags: ['5'],
+tags: ['5','6'],
 isDeleted: false,
 });
 createAdvertisement(dataA).then(console.log);
