@@ -35,15 +35,15 @@ const advertisementSchema = new Schema({
         default: [], 
     },
     userId: {
-        type: Schema.types.ObjectId, 
+        type: String, 
     //    required: true,
-        default: Schema.ObjectId, 
+        default: '', 
     },
-    //createdAt: {
-    //    type: Date, 
+    createdAt: {
+        type: Date, 
     //    required: true,
-    //    default: Date,   
-    //},
+        default: Date,   
+    },
     //updatedAt: {
     //    type: Date,  
     //    required: true,

@@ -71,7 +71,7 @@ const dataA = ({
 shortText: '1',
 description: '2',
 images: ['3'],
-//userId: '4',
+userId: '4',
 //createdAt: Date,
 //updatedAt: Date,
 tags: ['5'],
@@ -112,7 +112,7 @@ const findAdvertisement = async (params) => {
 const params = ({ 
   shortText:    '1',
   description:  '2',
-  //userId:       '4',
+  userId:       '4',
   tags:         ['5'],
   })
 findAdvertisement(params).then(console.log);
