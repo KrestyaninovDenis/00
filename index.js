@@ -19,7 +19,7 @@ const createUser = async (data) => {
     //обработка ошибок
   }
 };
-const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'})
+const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
 createUser(data).then(console.log);
 
 /*
@@ -42,7 +42,7 @@ const findUser = async (email) => {
     //обработка ошибок
   }
 };
-const email = '1'
+const email = '1';
 findUser(email).then(console.log);
 
 /*
@@ -68,15 +68,15 @@ const createAdvertisement = async (dataA) => {
 };
 
 const dataA = ({ 
-shortText: '11111',
-description: '22222',
+shortText: '1',
+description: '2',
 images: ['3'],
 userId: '4',
 createdAt: new Date(),
 updatedAt: new Date(),
-tags: ['5','6'],
+tags: ['5'],
 isDeleted: false,
-})
+});
 createAdvertisement(dataA).then(console.log);
 
 /*
@@ -113,8 +113,8 @@ const params = ({
   shortText:    '1',
   description:  '2',
   userId:       '4',
-  tags:         ['5','6'],
-  })
+  tags:         ['5'],
+  });
 findAdvertisement(params).then(console.log);
 
 /*
