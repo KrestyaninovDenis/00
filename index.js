@@ -74,7 +74,7 @@ images: ['3'],
 userId: '4',
 createdAt: new Date(),
 updatedAt: new Date(),
-tags: ['5','6'],
+tags: ['5','6','7'],
 isDeleted: false,
 });
 createAdvertisement(dataA).then(console.log);
