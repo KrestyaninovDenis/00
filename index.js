@@ -77,8 +77,6 @@ isDeleted	    boolean	    да	            нет
 */
 shortText: '1',
 description: '2',
-images: '3',
-userId: '4',
 createdAt: Date,
 updatedAt: Date,
 tags: '5',
