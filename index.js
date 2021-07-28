@@ -97,8 +97,8 @@ tags - значение в БД должно включать все иском�
 const findAdvertisement = async (params) => {
   try{
 
-    params.shortText = {$regex: new RegExp(params.shortText)};
-    params.description = {$regex: new RegExp(params.description)};
+    params.shortText = {$regex: new RegExp(params.shortText),i};
+    params.description = {$regex: new RegExp(params.description),i};
     params.isDeleted = false;
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
     const advertisements = await AdvertisementModule.find(params);
