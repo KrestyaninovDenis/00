@@ -102,7 +102,7 @@ const findAdvertisement = async (params) => {
     params.isDeleted = false;
 
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
-    if ('shortText' in params) {
+    if (shortText in params) {
     const advertisements = await AdvertisementModule.find(params);
     }
     return advertisements;
