@@ -97,8 +97,8 @@ tags - значение в БД должно включать все иском�
 const findAdvertisement = async (params) => {
   try{
 
-    params.shortText = '$regex: /'+ params.shortText+'/';
-    params.description = '$regex: /'+params.description+'/';
+    params.shortText = {$regex: '/'+params.shortText+'/'}
+    params.description = {$regex: '/'+params.shortText+'/'}
     params.isDeleted = false;
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
     const advertisements = await AdvertisementModule.find(params);
@@ -116,7 +116,26 @@ const params = ({
   });
 findAdvertisement(params).then(console.log);
 
+/*
+1.2.3 Удаление объявления
+const advertisement = await Advertisement.remove(id);
+Аргумент id должен быть типа string или ObjectId.
 
+Функция поиска не должна удалять запись из БД, а только выставлять значение флага isDeleted = true.
+*/
+/*
+const dataA1 = ({ 
+  shortText: 'fff',
+  description: 'ttt',
+  images: ['3'],
+  userId: '4',
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  tags: ['5','6'],
+  isDeleted: false,
+  })
+  createAdvertisement(dataA1).then(console.log);
+*/
 
 
 
