@@ -97,7 +97,7 @@ tags - значение в БД должно включать все иском�
 const findAdvertisement = async (params) => {
   try{
 
-    //if ('shortText' in params) { shortText = '{$regex: /'+shortText+'/}' };
+    params.shortText = '{$regex: /'+shortText+'/}'
     //if ('description' in params) { description = '{$regex: /'+description+'/}' };
     params.isDeleted = false;
 
