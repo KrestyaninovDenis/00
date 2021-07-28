@@ -9,7 +9,7 @@ const user = await UserModule.create(data);
 Результатом работы функции должен быть Promise, который резолвится с объектом модели User.
 */
 
-const createUser = require ('./01');
+const createUser = require ('./01').createUser;
 const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
 createUser(data).then(console.log);
 

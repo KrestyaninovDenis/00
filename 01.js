@@ -13,4 +13,16 @@ const createUser = async (data) => {
     }
   };
 
-  module.exports = createUser;
+  const findUser = async (email) => {
+    try{
+      const emailBD = ({ email:email })
+      const UserModule = require('./connectingBD/index').User;
+      const user = await UserModule.findOne(emailBD);
+      return user;
+    }
+    catch {
+      //обработка ошибок
+    }
+  };
+
+  module.exports = {createUser, findUser};
