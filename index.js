@@ -101,9 +101,8 @@ const findAdvertisement = async (params) => {
     params.description = {$regex: new RegExp(params.description)};
     params.isDeleted = false;
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
-    //const advertisements = await AdvertisementModule.find(params);
-    //return advertisements;
-    return params;
+    const advertisements = await AdvertisementModule.find(params);
+    return advertisements;
   }
   catch {
     //обработка ошибок
