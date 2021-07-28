@@ -113,10 +113,29 @@ const params = ({
   shortText:    '1',
   description:  '2',
   userId:       '4',
-  tags:         ['5','6','7'],
+  tags:         ['5'],
   })
 findAdvertisement(params).then(console.log);
 
+/*
+1.2.3 Удаление объявления
+const advertisement = await Advertisement.remove(id);
+Аргумент id должен быть типа string или ObjectId.
+
+Функция поиска не должна удалять запись из БД, а только выставлять значение флага isDeleted = true.
+*/
+
+const dataA1 = ({ 
+  shortText: 'fff',
+  description: 'ttt',
+  images: ['3'],
+  userId: '4',
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  tags: ['5','6'],
+  isDeleted: false,
+  })
+  createAdvertisement(dataA1).then(console.log);
 
 
 
