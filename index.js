@@ -68,13 +68,13 @@ const createAdvertisement = async (dataA) => {
 };
 
 const dataA = ({ 
-shortText: '11111',
-description: '22222',
+shortText: '1',
+description: '2',
 images: ['3'],
 userId: '4',
 createdAt: new Date(),
 updatedAt: new Date(),
-tags: ['5','6'],
+tags: ['5'],
 isDeleted: false,
 });
 createAdvertisement(dataA).then(console.log);
@@ -97,8 +97,8 @@ tags - значение в БД должно включать все иском�
 const findAdvertisement = async (params) => {
   try{
 
-    params.shortText = '$regex: /'+params.shortText+'/';
-    params.description = '$regex: /'+params.description+'/';
+    //params.shortText = '$regex: /'+params.shortText+'/';
+    //params.description = '$regex: /'+params.description+'/';
     params.isDeleted = false;
 
     const AdvertisementModule = require('./connectingBD/index').Advertisement;
