@@ -32,12 +32,11 @@ const advertisementSchema = new Schema({
     },    
     images: {
         type: [String],
-        default: ['1','2','3'],
+        default: [],
     },
     userId: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
-        default: "",
     },
     createdAt: {
         type: Date, 
