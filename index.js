@@ -124,7 +124,7 @@ const advertisement = await Advertisement.remove(id);
 
 Функция поиска не должна удалять запись из БД, а только выставлять значение флага isDeleted = true.
 */
-
+/*
 const dataA1 = ({ 
   shortText: 'fff',
   description: 'ttt',
@@ -136,7 +136,7 @@ const dataA1 = ({
   isDeleted: false,
   })
   createAdvertisement(dataA1).then(console.log);
-
+*/
 
 
 
