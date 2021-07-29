@@ -14,7 +14,7 @@ router.get('/api/signup', (req, res) => {
 */
 
 const createUser = require ('../connectingBD/BD-function').createUser;
-const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
+const data = ({ email:'11', passwordHash:'21', name:'31', contactPhone:'41'});
 createUser(data).then(
     result => console.log(result), 
     error => console.log(error) 
