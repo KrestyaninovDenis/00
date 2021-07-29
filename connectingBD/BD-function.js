@@ -11,7 +11,7 @@ const user = await UserModule.create(data);
 const createUser = async (data) => {
     try{
       const UserModule = require('./CONNECT/index').User;
-      const user = await UserModule.create(data,  { passwordHash: 0 });
+      const user = await UserModule.create(data);
       return user;
     }
     catch {
