@@ -11,7 +11,7 @@ router.post('/api/signup', async (req, res) => {
     });
 
     const createUser = require ('../connectingBD/BD-function').createUser;
-    createUser(data).then(console.log);
+    createUser(data).then(res.status(555));
     });
 
 module.exports = router;
