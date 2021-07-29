@@ -1,8 +1,13 @@
 const express = require ('express');
 const app = express();
+const bodyParser = require ('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 const bd = require ('./connectingBD/BD-function');
 
+const indexRouter = require('./API/index');
+app.use('/', indexRouter);
 
 const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
 bd.createUser(data).then(
