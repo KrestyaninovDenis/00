@@ -1,13 +1,17 @@
 const express = require ('express');
 const app = express();
 
-const createUser = require ('./01').createUser;
+const bd = require ('./01');
+
+//const createUser = require ('./01').createUser;
 const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
-createUser(data).then(
+const data_00 = bd.createUser(data).then();
+/*
   result => console.log(result), 
   error => console.log(error) 
 );
-
+*/
+console.log(data_00);
 
 const findUser = require ('./01').findUser;
 const email = '1';
