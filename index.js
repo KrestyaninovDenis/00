@@ -1,8 +1,6 @@
 const express = require ('express');
 const app = express();
 
-
-
 const createUser = require ('./01').createUser;
 const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
 createUser(data).then(console.log);
