@@ -10,7 +10,7 @@ router.get('/api/signup', async (req, res) => {
 
 router.post('/api/signup', async (req, res) => {
     console.log(req.body)
-    res.json (resoult);
+    res.json ('resoult');
 res.status(555);
 });
 
