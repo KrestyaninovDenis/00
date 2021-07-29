@@ -12,6 +12,7 @@ const createUser = async (data) => {
     try{
       const UserModule = require('./CONNECT/index').User;
       const user = await UserModule.create(data);
+      delete user.passwordHash;
       return user;
     }
     catch {
@@ -32,6 +33,7 @@ const user = await UserModule.findByEmail(email);
       const emailBD = ({ email:email })
       const UserModule = require('./CONNECT/index').User;
       const user = await UserModule.findOne(emailBD);
+      delete user.passwordHash;
       return user;
     }
     catch {

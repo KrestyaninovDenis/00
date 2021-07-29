@@ -6,7 +6,7 @@ const bd = require ('./connectingBD/BD-function');
 
 const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
 bd.createUser(data).then(
-  result => console.log(result+'создание')
+  result => console.log(result)
 );
 
 
