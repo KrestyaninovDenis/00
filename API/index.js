@@ -13,7 +13,7 @@ router.get('/api/signup', (req, res) => {
     res.json(newBook);
 */
 
-const createUser = require ('./01').createUser;
+const createUser = require ('../connectingBD/BD-function').createUser;
 const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
 createUser(data).then(
     result => console.log(result), 
