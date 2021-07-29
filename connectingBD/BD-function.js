@@ -11,7 +11,7 @@ const user = await UserModule.create(data);
 const createUser = async (data) => {
     try{
       const UserModule = require('./connectingBD/index').User;
-      const user = await UserModule.create(data).select('-__v -passwordHash');
+      const user = await UserModule.create(data);//.select('-__v -passwordHash');
       return user;
     }
     catch {
