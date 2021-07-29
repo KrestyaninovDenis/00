@@ -6,7 +6,7 @@ router.post('/api/signup', async (req, res) => {
     try{
 const createUser_END = await bd.createUser(req.body)
 
-if (Object.keys(obj).length == 0) {
+if (Object.keys(createUser_END).length == 0) {
     res.json ({error:'email занят',status:'error'});
 }
 else{
