@@ -1,13 +1,12 @@
 const express = require ('express');
 const app = express();
 
-const bd = require ('./01');
+const bd = require ('./connectingBD/BD-function');
 
 
 const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
 bd.createUser(data).then(
-  result => console.log(result), 
-  error => console.log(error) 
+  result => console.log(result)
 );
 
 
