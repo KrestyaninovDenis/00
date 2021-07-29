@@ -15,8 +15,7 @@ router.post('/api/signup', (req, res) => {
 const createUser = require ('./01').createUser;
 const data = ({ email:'1', passwordHash:'2', name:'3', contactPhone:'4'});
 createUser(data).then(
-    result => console.log(result), // выведет "done!" через одну секунду
-    error => console.log(error) // не будет запущена
+    result => console.log(result), 
+    error => console.log(error) 
   );
 });
-promise.then
