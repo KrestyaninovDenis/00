@@ -14,9 +14,9 @@ const createUser = async (data) => {
       const user = await UserModule.create(data);
       return user;
     }
-    catch (e) {
+    catch {
       //обработка ошибок
-      console.log('ошибка создания: '+e)
+      console.log('ошибка создания: ')
     }
   };
 //------------------------------------------------------------------------------------------------------------

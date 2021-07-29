@@ -6,10 +6,10 @@ router.post('/api/signup', async (req, res) => {
     try{
 const createUser_END = await bd.createUser(req.body)
 res.json ({data:createUser_END,status:'OK'});
-res.sendStatus(222)
+
     }
     catch {
-        res.json ('email занят');  
+        console.log("User profile not found") 
     }
 });
 
