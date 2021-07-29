@@ -8,8 +8,8 @@ const createUser_END = await bd.createUser(req.body)
 res.json ({data:createUser_END,status:'OK'});
 res.sendStatus(222)
     }
-    catch (e) {
-        res.json ('email занят'+e);  
+    catch {
+        res.json ('email занят');  
     }
 });
 
