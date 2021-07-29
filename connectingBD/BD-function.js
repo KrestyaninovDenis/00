@@ -10,8 +10,8 @@ const user = await UserModule.create(data);
 */
 const createUser = async (data) => {
     try{
-      const UserModule = require('./connectingBD/index').User;
-      const user = await UserModule.create(data);//.select('-__v -passwordHash');
+      const UserModule = require('./CONNECT/index').User;
+      const user = await UserModule.create(data).select('-__v -passwordHash');
       return user;
     }
     catch {
@@ -30,7 +30,7 @@ const user = await UserModule.findByEmail(email);
   const findUser = async (email) => {
     try{
       const emailBD = ({ email:email })
-      const UserModule = require('./connectingBD/index').User;
+      const UserModule = require('./CONNECT/index').User;
       const user = await UserModule.findOne(emailBD);
       return user;
     }
@@ -48,7 +48,7 @@ const advertisement = await Advertisement.create(data);
 */
 const createAdvertisement = async (dataA) => {
     try{
-      const AdvertisementModule = require('./connectingBD/index').Advertisement;
+      const AdvertisementModule = require('./CONNECT/index').Advertisement;
       const advertisement = await AdvertisementModule.create(dataA);
       return advertisement;
     }
@@ -77,7 +77,7 @@ const findAdvertisement = async (params) => {
       params.shortText = {$regex: new RegExp(params.shortText)};
       params.description = {$regex: new RegExp(params.description)};
       params.isDeleted = false;
-      const AdvertisementModule = require('./connectingBD/index').Advertisement;
+      const AdvertisementModule = require('./CONNECT/index').Advertisement;
       const advertisements = await AdvertisementModule.find(params);
       return advertisements;
     }
@@ -96,7 +96,7 @@ const advertisement = await Advertisement.remove(id);
 
   const find_id_Advertisement = async (id) => {
     try{
-      const AdvertisementModule = require('./connectingBD/index').Advertisement;
+      const AdvertisementModule = require('./CONNECT/index').Advertisement;
       const advertisements = await AdvertisementModule.findOneAndUpdate(id,{ $set: {isDeleted: true}}, {returnOriginal: false},);
       return advertisements;
     }
