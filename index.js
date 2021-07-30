@@ -14,7 +14,6 @@ const bd = require ('./connectingBD/BD-function');
 
 //__________________________________________________________________________________________________
 
-const User = require('./connectingBD/CONNECT/User')
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
 
@@ -23,23 +22,18 @@ passport.use('local', new LocalStrategy({
     passwordField: 'passwordHash',
     passReqToCallback : false
   },
-  function(email, passwordHash, done){
-      const emailBD = ({ email:email });
+  function fffft (email, passwordHash, done){
+
       const UserModule = require('./connectingBD/CONNECT/index').User;
-      UserModule.findOne(emailBD, (err,user) => {
+      UserModule.findOne({ email:email }, (err,user) => {
         if (err) { return done(err) } //ошибка обработки
         if (!user) { return done(null, false) } //ничего не нашёл
         if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
         return done(null, user)
     });
-}));
+}
 
-
-
-
-
-
-
+));
 
 passport.serializeUser(function (user, cb) {
     cb(null, user._id)
