@@ -15,7 +15,7 @@ const temp = data.passwordHash;
       data.salt = bcrypt.genSaltSync(10);
       data.passwordHash = bcrypt.hashSync(data.passwordHash, data.salt);
                       
-      if (bcrypt.hashSync(data.passwordHash, data.salt) == temp) {
+      {
         const UserModule = require('./CONNECT/index').User;
         const user = await UserModule.create(data);
         return user;
