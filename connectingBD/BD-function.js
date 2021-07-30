@@ -45,7 +45,7 @@ const user = await UserModule.findByEmail(email);
     }
   };
 */
-  const findUser1 = async (email, passwordHash, done) => {
+  const findUser = async (email, passwordHash, done) => {
     try{
       const emailBD = ({ email:email })
       const UserModule = require('./CONNECT/index').User;
@@ -128,4 +128,4 @@ const advertisement = await Advertisement.remove(id);
   };
 //------------------------------------------------------------------------------------------------------------
 
-  module.exports = {createUser, findUser, createAdvertisement, findAdvertisement, find_id_Advertisement, findUser1};
+  module.exports = {createUser, findUser, createAdvertisement, findAdvertisement, find_id_Advertisement};
