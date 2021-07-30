@@ -23,8 +23,20 @@ passport.use('local', new LocalStrategy({
     passwordField: 'passwordHash',
     passReqToCallback : false
   },
-  bd.findUser(email, passwordHash, done)
-));
+  
+
+
+  async (req, res) => { 
+    try {
+      await bd.findUser(req.body.email, req.body.passwordHash, done)
+        res.status (200);
+    }
+    catch {
+        res.status (404);
+    }
+}));
+
+
 
 passport.serializeUser(function (user, cb) {
     cb(null, user._id)
