@@ -11,12 +11,11 @@ const user = await UserModule.create(data);
 */
 const createUser = async (data) => {
     try {
-const temp = data.passwordHash
-     /* data.salt = bcrypt.genSaltSync(10);
-      data.passwordHash = bcrypt.hashSync(data.passwordHash, data.salt);*/
-      data.passwordHash = bcrypt.hash(data.passwordHash, 12)
+const temp = data.passwordHash;
+      data.salt = bcrypt.genSaltSync(10);
+      data.passwordHash = bcrypt.hashSync(data.passwordHash, data.salt);
                       
-      if (bcrypt.compare(data.passwordHash, temp)) {
+      if (bcrypt.hashSync(data.passwordHash, data.salt) == temp) {
         const UserModule = require('./CONNECT/index').User;
         const user = await UserModule.create(data);
         return user;
