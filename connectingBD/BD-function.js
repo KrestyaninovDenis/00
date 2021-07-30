@@ -47,7 +47,7 @@ const user = await UserModule.findByEmail(email);
 */
   function findUser (email, passwordHash, done){
 
-    const UserModule = require('./connectingBD/CONNECT/index').User;
+    const UserModule = require('./CONNECT/index').User;
     UserModule.findOne({ email:email }, (err,user) => {
       if (err) { return done(err) } //ошибка обработки
       if (!user) { return done(null, false) } //ничего не нашёл
