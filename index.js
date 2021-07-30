@@ -26,12 +26,13 @@ passport.use('local', new LocalStrategy({
   
   function(email, passwordHash, done){
       const emailBD = ({ email:email })
-      const UserModule = require('./CONNECT/index').User;
+      const UserModule = require('./connectingBD/CONNECT/index').User;
       const user = UserModule.findOne(emailBD);
     if (!user) { return done(null, false) } //ничего не нашёл
     else if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
     else { return done(null, user) }
-    }));
+    }
+));
 
 
 
