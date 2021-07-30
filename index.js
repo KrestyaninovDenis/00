@@ -24,17 +24,14 @@ passport.use('local', new LocalStrategy({
     passReqToCallback : false
   },
   
-
-
-  async (req, res) => { 
-    try {
-      await bd.findUser(req.body.email, req.body.passwordHash, done)
-        res.status (200);
-    }
-    catch {
-        res.status (404);
-    }
-}));
+  function(email, passwordHash, done){
+      const emailBD = ({ email:email })
+      const UserModule = require('./CONNECT/index').User;
+      const user = UserModule.findOne(emailBD);
+    if (!user) { return done(null, false) } //ничего не нашёл
+    else if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
+    else { return done(null, user) }
+    }));
 
 
 
