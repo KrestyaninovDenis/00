@@ -11,14 +11,18 @@ const user = await UserModule.create(data);
 */
 const createUser = async (data) => {
     try {
-// создаем соль
-const salt = bcrypt.genSaltSync(10);
-// шифруем пароль
-data.passwordHash = bcrypt.hashSync(data.passwordHash, salt)
+const temp = data.passwordHash
+      data.salt = bcrypt.genSaltSync(10);
+      data.passwordHash = bcrypt.hashSync(data.passwordHash, data.salt);
+      
+      if (bcrypt.hashSync(temp, data.salt) === rows[0].data.passwordHash) {
+        const UserModule = require('./CONNECT/index').User;
+        const user = await UserModule.create(data);
+        return user;
+      }
 
-      const UserModule = require('./CONNECT/index').User;
-      const user = await UserModule.create(data);
-      return user;
+
+
     }
     catch (err) {
       throw err;

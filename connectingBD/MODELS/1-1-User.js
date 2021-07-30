@@ -27,6 +27,10 @@ const userSchema = new Schema({
         required: true,
         default: "",   
     },    
+    salt: {
+        type: String, 
+        default: "",   
+    }, 
     name: {
         type: String,
         required: true,
