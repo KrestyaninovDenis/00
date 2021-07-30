@@ -23,7 +23,7 @@ passport.use('local', new LocalStrategy({
     passwordField: 'passwordHash',
     passReqToCallback : false
   },
-  bd.findUser1(email, password, done)
+  bd.findUser1(email, passwordHash, done)
 ));
 
 passport.serializeUser(function (user, cb) {

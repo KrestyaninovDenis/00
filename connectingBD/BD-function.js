@@ -32,6 +32,7 @@ const user = await UserModule.findByEmail(email);
 Результатом работы функции должен быть Promise, который резолвится объектом модели User или null, 
 если пользователь не существует.
 */ 
+/*
   const findUser = async (email) => {
     try{
       const emailBD = ({ email:email })
@@ -43,14 +44,14 @@ const user = await UserModule.findByEmail(email);
       //обработка ошибок
     }
   };
-
-  const findUser1 = async (email, password, done) => {
+*/
+  const findUser1 = async (email, passwordHash, done) => {
     try{
       const emailBD = ({ email:email })
       const UserModule = require('./CONNECT/index').User;
       const user = await UserModule.findOne(emailBD);
     if (!user) { return done(null, false) } //ничего не нашёл
-    if (password !== user.passwordHash) { return done(null, false); } //неверный пароль
+    if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
     return done(null, user)
     }
     catch {
