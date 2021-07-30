@@ -23,17 +23,14 @@ passport.use('local', new LocalStrategy({
     passwordField: 'passwordHash',
     passReqToCallback : false
   },
-  
   function(email, passwordHash, done){
       const emailBD = ({ email:email })
       const UserModule = require('./connectingBD/CONNECT/index').User;
-      const user = UserModule.findOne(emailBD);
+      UserModule.findOne(emailBD), (err,user) => {
     if (!user) { return done(null, false) } //ничего не нашёл
     else if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
     else { return done(null, user) }
-    }
-));
-
+  }}));
 
 
 passport.serializeUser(function (user, cb) {
