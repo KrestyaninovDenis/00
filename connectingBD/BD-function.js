@@ -14,7 +14,7 @@ const createUser = async (data) => {
 const temp = data.passwordHash
      /* data.salt = bcrypt.genSaltSync(10);
       data.passwordHash = bcrypt.hashSync(data.passwordHash, data.salt);*/
-      bcrypt.hash(data.passwordHash, 12)
+      data.passwordHash = bcrypt.hash(data.passwordHash, 12)
                       
       if (bcrypt.compare(data.passwordHash, temp)) {
         const UserModule = require('./CONNECT/index').User;
