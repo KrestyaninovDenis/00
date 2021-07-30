@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bd = require ('../connectingBD/BD-function');
 
+// Регистрация пользователя
 router.post('/api/signup', async (req, res) => { 
     try {
         const createUser_END = await bd.createUser(req.body)

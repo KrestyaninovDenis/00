@@ -1,5 +1,6 @@
 const express = require ('express');
 const app = express();
+const bcrypt = require('bcrypt');
 
 /*
 1.1.1 Функция "Создание пользователя"
@@ -10,6 +11,11 @@ const user = await UserModule.create(data);
 */
 const createUser = async (data) => {
     try {
+// создаем соль
+const salt = bcrypt.genSaltSync(10);
+// шифруем пароль
+data.passwordHash = bcrypt.hashSync(data.passwordHash, salt)
+
       const UserModule = require('./CONNECT/index').User;
       const user = await UserModule.create(data);
       return user;
