@@ -13,16 +13,13 @@ const createUser = async (data) => {
     try {
 const temp = data.passwordHash;
       data.salt = bcrypt.genSaltSync(10);
-      data.passwordHash = bcrypt.hashSync(data.passwordHash, data.salt);
-                      
+      data.passwordHash = bcrypt.hashSync(data.passwordHash, data.salt);            
       {
         const UserModule = require('./CONNECT/index').User;
         const user = await UserModule.create(data);
+        delete user.passwordHash;
         return user;
       }
-
-
-
     }
     catch (err) {
       throw err;
