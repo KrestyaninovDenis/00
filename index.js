@@ -4,14 +4,6 @@ const bodyParser = require ('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-const bd = require ('./connectingBD/BD-function');
-
-
-
-
-
-
-
 //__________________________________________________________________________________________________
 
 const passport       = require('passport');
@@ -22,9 +14,15 @@ passport.use('local', new LocalStrategy({
     passwordField: 'passwordHash',
     passReqToCallback : false
   },
-  app.use (bd.findUser)
-
-));
+    function (email, passwordHash, done){
+    const UserModule = require('./CONNECT/index').User;
+    UserModule.findOne({ email:email }, (err,user) => {
+      if (err) { return done(err) } //ошибка обработки
+      if (!user) { return done(null, false) } //ничего не нашёл
+      if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
+      return done(null, user)
+  });
+}));
 
 passport.serializeUser(function (user, cb) {
     cb(null, user._id)
