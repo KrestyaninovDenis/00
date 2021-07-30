@@ -15,7 +15,7 @@ passport.use('local', new LocalStrategy({
     passReqToCallback : false
   },
     function (email, passwordHash, done){
-    const UserModule = require('./CONNECT/index').User;
+    const UserModule = require('./connectingBD/CONNECT/index').User;
     UserModule.findOne({ email:email }, (err,user) => {
       if (err) { return done(err) } //ошибка обработки
       if (!user) { return done(null, false) } //ничего не нашёл
