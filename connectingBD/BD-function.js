@@ -14,8 +14,9 @@ const createUser = async (data) => {
       const user = await UserModule.create(data);
       return user;
     }
-    catch {
-      //обработка ошибок
+    catch (err) {
+      throw err;
+      return 'ошибка перехвачена';
     }
   };
 //------------------------------------------------------------------------------------------------------------
