@@ -16,8 +16,7 @@ const temp = data.passwordHash;
       data.passwordHash = bcrypt.hashSync(data.passwordHash, data.salt);            
       {
         const UserModule = require('./CONNECT/index').User;
-        const user = await UserModule.create(data);
-        delete user.passwordHash;
+        const user = await UserModule.create(data, {'passwordHash':0, '_id':0});
         return user;
       }
     }
