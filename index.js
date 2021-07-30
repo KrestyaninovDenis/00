@@ -22,16 +22,7 @@ passport.use('local', new LocalStrategy({
     passwordField: 'passwordHash',
     passReqToCallback : false
   },
-  function fffft (email, passwordHash, done){
-
-      const UserModule = require('./connectingBD/CONNECT/index').User;
-      UserModule.findOne({ email:email }, (err,user) => {
-        if (err) { return done(err) } //ошибка обработки
-        if (!user) { return done(null, false) } //ничего не нашёл
-        if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
-        return done(null, user)
-    });
-}
+  bd.findUser (email, passwordHash, done)
 
 ));
 
