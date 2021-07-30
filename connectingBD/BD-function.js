@@ -43,6 +43,22 @@ const user = await UserModule.findByEmail(email);
       //обработка ошибок
     }
   };
+
+  const findUser1 = async (email, password, done) => {
+    try{
+      const emailBD = ({ email:email })
+      const UserModule = require('./CONNECT/index').User;
+      const user = await UserModule.findOne(emailBD);
+    if (!user) { return done(null, false) } //ничего не нашёл
+    if (password !== user.passwordHash) { return done(null, false); } //неверный пароль
+    return done(null, user)
+    }
+    catch {
+      //обработка ошибок
+    }
+  };
+
+
 //------------------------------------------------------------------------------------------------------------
 /*
 1.2.2 Создание объявления
@@ -111,4 +127,4 @@ const advertisement = await Advertisement.remove(id);
   };
 //------------------------------------------------------------------------------------------------------------
 
-  module.exports = {createUser, findUser, createAdvertisement, findAdvertisement, find_id_Advertisement};
+  module.exports = {createUser, findUser, createAdvertisement, findAdvertisement, find_id_Advertisement, findUser1};

@@ -23,24 +23,18 @@ passport.use('local', new LocalStrategy({
     passwordField: 'passwordHash',
     passReqToCallback : false
   },
-      function(username, password, done){
-        User.findOne({email:username}, (err,user) => {
-        if (err) { return done(err) } //ошибка обработки
-        if (!user) { return done(null, false) } //ничего не нашёл
-        if (password !== user.passwordHash) { return done(null, false); } //неверный пароль
-        return done(null, user)
-    });
-}));
+  bd.findUser1(email, password, done)
+));
 
 passport.serializeUser(function (user, cb) {
     cb(null, user._id)
-  })
+})
 passport.deserializeUser(function (_id, cb) {
     User.findById(_id, function (err, user) {
       if (err) { return cb(err) }
       cb(null, user)
     })
-  })
+})
 
 app.use(require('express-session')({
     secret: "SECRET",
