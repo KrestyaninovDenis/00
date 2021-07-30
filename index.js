@@ -22,7 +22,7 @@ passport.use('local', new LocalStrategy({
     passwordField: 'passwordHash',
     passReqToCallback : false
   },
-  bd.findUser (email, passwordHash, done)
+  app.use (bd.findUser)
 
 ));
 
