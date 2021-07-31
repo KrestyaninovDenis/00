@@ -62,11 +62,8 @@ router.post('/api/advertisements/:id', async (req, res) => {
         const RRR = ({_id:req.params.id})
         //const ADV = await bd.findAdvertisement(RRR)
         const {id} = req.params;
-        console.log(id)
-        console.log('------------------------------------')
-        console.log(req.body)
         const AdvModule = require('../connectingBD/CONNECT/index').Advertisement;
-        const createADV = await AdvModule.findOneAndUpdate(RRR, req.body, {new: true}, function(err, result){
+        const createADV = await AdvModule.findIdAndUpdate(id, req.body, {new: true}, function(err, result){
             if(err) return console.log(err);
             console.log(result);
             return result
