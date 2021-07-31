@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 const bd = require ('../connectingBD/BD-function');
 const passport = require('passport');
@@ -34,6 +35,8 @@ router.post('/api/advertisements', async (req, res) => {
     try {
         const createADV = await bd.createAdvertisement(req.body)
         res.status (200);
+
+        app.use(passport.session());
         res.json (req.user)
         //res.json (createADV);
     }
