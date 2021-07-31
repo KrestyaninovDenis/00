@@ -69,13 +69,12 @@ router.post('/api/advertisements/:id', async (req, res) => {
         const createADV = await AdvModule.findOneAndUpdate(RRR, req.body, {new: true}, function(err, result){
             if(err) return console.log(err);
             console.log(result);
-            res.status (200);
-            res.json ({data:createADV,status:'OK'});
+            return result
         });
             
         
-        //res.status (200);
-        //res.json ({data:createADV,status:'OK'});
+        res.status (200);
+        res.json ({data:createADV,status:'OK'});
     }
     catch {
         res.status (404);
