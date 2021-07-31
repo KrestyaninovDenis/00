@@ -47,9 +47,10 @@ router.get('/api/advertisements/:id', async (req, res) => {
         const RRR = ({ 
             _id: req.params,
             });
-        const ADV = await bd.findAdvertisement(RRR)
+        //const ADV = await bd.findAdvertisement(RRR)
         res.status (200);
-        res.json ({data:ADV,status:'OK'});
+    res.json (RRR)
+        //res.json ({data:ADV,status:'OK'});
     }
     catch {
         res.status (404);
