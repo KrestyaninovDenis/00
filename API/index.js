@@ -31,12 +31,12 @@ router.post('/api/signin', function(req, res, next) {
         })
     })(req, res, next);
 });
-// Создание объявления
+// Создание объявления (для идентифицированных)
 router.post('/api/advertisements', async (req, res) => {
     try {
         if (req.isAuthenticated && req.isAuthenticated()) {
-            //res.json (req.user)
             const createADV = await bd.createAdvertisement(req.body)
+            createADV.userId = req.user._id
             res.status (200);
             res.json (createADV);
         }
