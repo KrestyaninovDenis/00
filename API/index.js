@@ -66,7 +66,11 @@ router.post('/api/advertisements/:id', async (req, res) => {
         console.log('------------------------------------')
         console.log(req.body)
         const AdvModule = require('../connectingBD/CONNECT/index').Advertisement;
-        const createADV = AdvModule.findOneAndUpdate(RRR, req.body, {new: true})
+        const createADV = AdvModule.findOneAndUpdate(RRR, req.body, {new: true}, function(err, result){
+            if(err) return console.log(err);
+            console.log(result);
+        });
+            
         
         res.status (200);
         res.json ({data:createADV,status:'OK'});
