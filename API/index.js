@@ -31,24 +31,6 @@ router.post('/api/signin', function(req, res, next) {
         })
     })(req, res, next);
 });
-// Создание объявления (для идентифицированных)
-router.post('/api/advertisements', async (req, res) => {
-    try {
-        if (req.isAuthenticated && req.isAuthenticated()) {
-            req.body.userId = req.user._id
-            const createADV = await bd.createAdvertisement(req.body)
-            res.status (200);
-            res.json (createADV);
-        }
-        else {
-            res.json ('нужна идентификация');
-        }
-    }
-    catch {
-        res.status (404);
-        res.json ("ошибка создания объявления");
-    }
-});
 // Поиск объявления по ID (для всех)
 router.get('/api/advertisements/:id', async (req, res) => {
     try {
@@ -77,14 +59,32 @@ router.get('/api/advertisements', async (req, res) => {
 // Редактирование объявления (проверка хозяина объявления)
 router.post('/api/advertisements/:id', async (req, res) => {
     try {
-        const RRR = ({_id:req.params.id})
-        const ADV = await bd.findOneAndUpdate(RRR, req.body);
+        const RRR1 = ({_id:req.params.id})
+        const ADV1 = await bd.findOneAndUpdate(RRR1, req.body);
         res.status (200);
-        res.json ({data:ADV,status:'OK'});
+        res.json ({data:ADV1,status:'OK'});
     }
     catch {
         res.status (404);
         res.json ({error:"email занят",status:'error'});
+    }
+});
+// Создание объявления (для идентифицированных)
+router.post('/api/advertisements', async (req, res) => {
+    try {
+        if (req.isAuthenticated && req.isAuthenticated()) {
+            req.body.userId = req.user._id
+            const createADV = await bd.createAdvertisement(req.body)
+            res.status (200);
+            res.json (createADV);
+        }
+        else {
+            res.json ('нужна идентификация');
+        }
+    }
+    catch {
+        res.status (404);
+        res.json ("ошибка создания объявления");
     }
 });
 // Удаление объявления (проверка хозяина объявления)
