@@ -26,7 +26,7 @@ passport.use('local', new LocalStrategy({
     //const tmp = bcrypt.hashSync(passwordHash, user.salt)
     //if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
 
-const resul = bcrypt.compareSync(passwordHash, user.passwordHash);
+const resul = bcrypt.compareSync(user.passwordHash, passwordHash);
 if (resul) {
   return done(null, user)
 } else {
