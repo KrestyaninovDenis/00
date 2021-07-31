@@ -29,31 +29,42 @@ router.post('/api/signin', function(req, res, next) {
         res.json ({data:user,status:'OK'})
     })(req, res, next);
 });
-
+// Создание объявления
 router.post('/api/advertisements', async (req, res) => {
     try {
         const createADV = await bd.createAdvertisement(req.body)
         res.status (200);
-        res.json ({data:createADV,status:'OK'});
+        res.json (createADV);
     }
     catch {
         res.status (404);
-        res.json ({error:"ошибка создания объявления",status:'error'});
+        res.json ("ошибка создания объявления");
     }
 });
-
+// Поиск объявления (для всех)
 router.get('/api/advertisements', async (req, res) => {
     try {
-        const createUser_END = await bd.findAdvertisement(req.body)
+        const ADV = await bd.findAdvertisement(req.body)
         res.status (200);
-        res.json ({data:createUser_END,status:'OK'});
+        res.json ({data:ADV,status:'OK'});
     }
     catch {
         res.status (404);
         res.json ({error:"email занят",status:'error'});
     }
 });
-
+// Поиск объявления (для всех)
+router.get('/api/advertisements/:id', async (req, res) => {
+    try {
+        const ADV = await bd.findAdvertisement(req.params)
+        res.status (200);
+        res.json ({data:ADV,status:'OK'});
+    }
+    catch {
+        res.status (404);
+        res.json ({error:"email занят",status:'error'});
+    }
+});
 
 
 
