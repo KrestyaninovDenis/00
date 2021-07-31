@@ -59,10 +59,11 @@ router.get('/api/advertisements', async (req, res) => {
 // Редактирование объявления (проверка хозяина объявления)
 router.post('/api/advertisements/:id', async (req, res) => {
     try {
-        const RRR1 = ({_id:req.params.id})
-        const ADV1 = await bd.findOneAndUpdate({RRR1}, req.body);
+        const RRR = ({_id:req.params.id})
+        const ADV = await bd.findAdvertisement(RRR)
+        const createADV = await bd.createAdvertisement(req.body)
         res.status (200);
-        res.json ({data:ADV1,status:'OK'});
+        res.json ({data:createADV,status:'OK'});
     }
     catch {
         res.status (404);
