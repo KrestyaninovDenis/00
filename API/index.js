@@ -37,11 +37,8 @@ router.post('/api/advertisements', async (req, res) => {
         res.status (200);
         //res.json (createADV);
 
-        function faa (req, res, next) {
-            if (req.user) {
-            } else {
-            }
-        } faa();
+        const aaa = function (req, res, next) {}
+
         res.json ({aaa:req.user})
     }
     catch {
