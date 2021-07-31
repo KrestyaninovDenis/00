@@ -29,8 +29,8 @@ passport.use('local', new LocalStrategy({
 }));
 
 passport.serializeUser(function (user, cb) {
+  console.log (user)
     cb(null, user._id)
-    console.log (req.session.passport.user)
 })
 passport.deserializeUser(function (_id, cb) {
   const UserModule = require('./connectingBD/CONNECT/index').User;
