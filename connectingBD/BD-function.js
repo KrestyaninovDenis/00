@@ -45,6 +45,22 @@ const user = await UserModule.findByEmail(email);
     }
   };
 */
+const findUser = async (email, passwordHash, done) => {
+  try {
+    const UserModule = require('./CONNECT/index').User;
+    await UserModule.findOne({ email:email }, (err,user) => {
+      if (err) { return done(err) } //ошибка обработки
+      if (!user) { return done(null, false) } //ничего не нашёл
+          const bcrypt = require('bcrypt');     
+          const tmp = bcrypt.hashSync(passwordHash, user.salt)
+          if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
+      return done(null, user)
+    })
+  }
+  catch {
+    return done(err)
+  }
+};
 
   function findUser (email, passwordHash, done) {
     const UserModule = require('./CONNECT/index').User;
