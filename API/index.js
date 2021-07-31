@@ -35,10 +35,7 @@ router.post('/api/advertisements', async (req, res) => {
     try {
         const createADV = await bd.createAdvertisement(req.body)
         res.status (200);
-
-        app.use(passport.session());
-        res.json (req.user)
-        //res.json (createADV);
+        res.json (createADV);
     }
     catch {
         res.status (404);
