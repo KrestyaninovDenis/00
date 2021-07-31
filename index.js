@@ -22,11 +22,11 @@ passport.use('local', new LocalStrategy({
       if (err) { return done(err) } //ошибка обработки
       if (!user) { return done(null, false) } //ничего не нашёл
 
-    //const bcrypt = require('bcrypt');     
+const bcrypt = require('bcrypt');     
     //const tmp = bcrypt.hashSync(passwordHash, user.salt)
     //if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
 
-const resul = bcrypt.compareSync(user.passwordHash, passwordHash);
+const resul = bcrypt.compareSync(passwordHash, user.passwordHash);
 if (resul) {
   return done(null, user)
 } else {
