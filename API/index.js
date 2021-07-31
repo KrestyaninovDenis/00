@@ -60,7 +60,7 @@ router.get('/api/advertisements', async (req, res) => {
 router.post('/api/advertisements/:id', async (req, res) => {
     try {
         const RRR1 = ({_id:req.params.id})
-        const ADV1 = await bd.findOneAndUpdate({RRR1}, {req.body});
+        const ADV1 = await bd.findOneAndUpdate({RRR1}, req.body);
         res.status (200);
         res.json ({data:ADV1,status:'OK'});
     }
