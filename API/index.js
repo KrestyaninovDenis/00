@@ -8,6 +8,7 @@ const passport = require('passport');
 router.post('/api/signup', async (req, res) => { 
     try {
         const createUser_END = await bd.createUser(req.body)
+        delete createUser_END.passwordHash
         res.status (200);
         res.json ({data:createUser_END,status:'OK'});
     }
@@ -34,17 +35,15 @@ router.post('/api/signin', function(req, res, next) {
 // Создание объявления
 router.post('/api/advertisements', async (req, res) => {
     try {
-        const createADV = await bd.createAdvertisement(req.body)
-        res.status (200);
-        //----
         if (req.isAuthenticated && req.isAuthenticated()) {
-            res.json (req.user)
-        }
-        else {
+            //res.json (req.user)
+            const createADV = await bd.createAdvertisement(req.body)
+            res.status (200);
             res.json (createADV);
         }
-
-        //res.json (createADV);
+        else {
+            res.json ('нужна идентификация');
+        }
     }
     catch {
         res.status (404);
