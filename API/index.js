@@ -21,7 +21,7 @@ router.post('/api/signin', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
         if (!user) { return res.redirect('/login'); }
-        res.json (req.user)
+        res.json (user)
         req.login(user, next);
     })(req, res, next);
 });
