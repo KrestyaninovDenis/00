@@ -17,10 +17,15 @@ router.post('/api/signup', async (req, res) => {
     }
 });
 // Аутентификация
-router.post('/api/signin', 
-    passport.authenticate('local'), function(req, res) {
+router.post('/api/signin', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { return res.redirect('/login'); }
         res.json (req.user)
-      });
+        req.login(user, next);
+    })(req, res, next);
+});
+
 
 
 
