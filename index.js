@@ -9,23 +9,34 @@ app.use(bodyParser.urlencoded({extended: true}));
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
 
+const bd = require ('../connectingBD/BD-function');
+
 passport.use('local', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'passwordHash',
     passReqToCallback : false
   },
-    function (email, passwordHash, done){
+
+
+
+  
+bd.findUser(email, passwordHash, done)
+
+/*
+    function (email, passwordHash, done) {
     const UserModule = require('./connectingBD/CONNECT/index').User;
     UserModule.findOne({ email:email }, (err,user) => {
       if (err) { return done(err) } //ошибка обработки
       if (!user) { return done(null, false) } //ничего не нашёл
-const bcrypt = require('bcrypt');     
-const tmp = bcrypt.hashSync(passwordHash, user.salt)
-      if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
+    const bcrypt = require('bcrypt');     
+    const tmp = bcrypt.hashSync(passwordHash, user.salt)
+    if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
       //if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
       return done(null, user)
   });
-}));
+}
+*/
+));
 
 passport.serializeUser(function (user, cb) {
     cb(null, user._id)

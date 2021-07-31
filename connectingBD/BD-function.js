@@ -1,6 +1,6 @@
-const express = require ('express');
-const app = express();
-const bcrypt = require('bcrypt');
+const express   = require ('express');
+const app       = express();
+const bcrypt    = require('bcrypt');
 
 /*
 1.1.1 Функция "Создание пользователя"
@@ -32,7 +32,7 @@ const user = await UserModule.findByEmail(email);
 Результатом работы функции должен быть Promise, который резолвится объектом модели User или null, 
 если пользователь не существует.
 */ 
-
+/*
   const findUser = async (email) => {
     try{
       const emailBD = ({ email:email })
@@ -44,9 +44,20 @@ const user = await UserModule.findByEmail(email);
       //обработка ошибок
     }
   };
+*/
 
-
-
+  function findUser (email, passwordHash, done) {
+    const UserModule = require('./CONNECT/index').User;
+    UserModule.findOne({ email:email }, (err,user) => {
+      if (err) { return done(err) } //ошибка обработки
+      if (!user) { return done(null, false) } //ничего не нашёл
+    const bcrypt = require('bcrypt');     
+    const tmp = bcrypt.hashSync(passwordHash, user.salt)
+    if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
+      //if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
+      return done(null, user)
+  });
+}
 
 
 //------------------------------------------------------------------------------------------------------------

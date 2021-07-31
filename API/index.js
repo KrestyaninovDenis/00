@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const bd = require ('../connectingBD/BD-function');
 const passport = require('passport');
-const User = require('../connectingBD/CONNECT/User')
 
 // Регистрация пользователя
 router.post('/api/signup', async (req, res) => { 
