@@ -19,8 +19,9 @@ passport.use('local', new LocalStrategy({
     UserModule.findOne({ email:email }, (err,user) => {
       if (err) { return done(err) } //ошибка обработки
       if (!user) { return done(null, false) } //ничего не нашёл
-
-      if (user.passwordHash !== bcrypt.hashSync(passwordHash, user.salt)) { return done(null, false); } //неверный пароль
+const bcrypt = require('bcrypt');     
+const tmp = bcrypt.hashSync(passwordHash, user.salt)
+      if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
       //if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
       return done(null, user)
   });
