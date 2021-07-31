@@ -8,10 +8,8 @@ const passport = require('passport');
 router.post('/api/signup', async (req, res) => { 
     try {
         const createUser_END = await bd.createUser(req.body)
-        const createUser_EN = createUser_END
-        delete createUser_EN.passwordHash
         res.status (200);
-        res.json ({data:createUser_EN,status:'OK'});
+        res.json ({data:createUser_END,status:'OK'});
     }
     catch {
         res.status (404);
