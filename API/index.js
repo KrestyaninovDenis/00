@@ -59,14 +59,14 @@ router.get('/api/advertisements', async (req, res) => {
 // Редактирование объявления (проверка хозяина объявления)
 router.post('/api/advertisements/:id', async (req, res) => {
     try {
-        //const RRR = ({_id:req.params.id})
+        const RRR = ({_id:req.params.id})
         //const ADV = await bd.findAdvertisement(RRR)
         const {id} = req.params;
         console.log(id)
         console.log('------------------------------------')
         console.log(req.body)
-        const AdvertisementModule = require('../connectingBD/CONNECT/index').Advertisement;
-        const createADV = AdvertisementModule.findByIdAndUpdate(id, req.body)
+        const AdvModule = require('../connectingBD/CONNECT/index').Advertisement;
+        const createADV = AdvModule.findOneAndUpdate(RRR, req.body, {new: true})
         
         res.status (200);
         res.json ({data:createADV,status:'OK'});
