@@ -24,7 +24,6 @@ passport.use('local', new LocalStrategy({
     const bcrypt = require('bcrypt');     
     const tmp = bcrypt.hashSync(passwordHash, user.salt)
     if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
-      //if (passwordHash !== user.passwordHash) { return done(null, false); } //неверный пароль
       return done(null, user)
   });
 }));

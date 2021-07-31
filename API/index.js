@@ -30,9 +30,29 @@ router.post('/api/signin', function(req, res, next) {
     })(req, res, next);
 });
 
+router.push('/api/advertisements', async (req, res) => {
+    try {
+        const createADV = await bd.createAdvertisement(req.body)
+        res.status (200);
+        res.json ({data:createADV,status:'OK'});
+    }
+    catch {
+        res.status (404);
+        res.json ({error:"ошибка создания объявления",status:'error'});
+    }
+});
 
-
-
+router.get('/api/advertisements', async (req, res) => {
+    try {
+        const createUser_END = await bd.findAdvertisement(req.body)
+        res.status (200);
+        res.json ({data:createUser_END,status:'OK'});
+    }
+    catch {
+        res.status (404);
+        res.json ({error:"email занят",status:'error'});
+    }
+});
 
 
 
