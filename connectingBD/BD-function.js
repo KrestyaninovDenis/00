@@ -32,7 +32,7 @@ const user = await UserModule.findByEmail(email);
 Результатом работы функции должен быть Promise, который резолвится объектом модели User или null, 
 если пользователь не существует.
 */ 
-/*
+
   const findUser = async (email) => {
     try{
       const emailBD = ({ email:email })
@@ -44,7 +44,7 @@ const user = await UserModule.findByEmail(email);
       //обработка ошибок
     }
   };
-*/
+
 //------------------------------------------------------------------------------------------------------------
 /*
 1.2.2 Создание объявления
