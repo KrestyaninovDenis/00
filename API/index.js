@@ -27,7 +27,8 @@ router.post('/api/signin', function(req, res, next) {
         }
         //req.login(user, next);
         res.status (200);
-        res.json ({data:user,status:'OK'})
+        //res.json ({data:user,status:'OK'})
+        res.json ({ user: req.user })
     })(req, res, next);
 });
 // Создание объявления
