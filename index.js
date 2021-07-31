@@ -32,7 +32,8 @@ passport.serializeUser(function (user, cb) {
     cb(null, user._id)
 })
 passport.deserializeUser(function (_id, cb) {
-    User.findById(_id, function (err, user) {
+  const UserModule = require('./connectingBD/CONNECT/index').User;
+  UserModule.findById(_id, function (err, user) {
       console.log (err)
       console.log (user)
       if (err) { return cb(err) }
