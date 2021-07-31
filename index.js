@@ -21,10 +21,19 @@ passport.use('local', new LocalStrategy({
     UserModule.findOne({ email:email }, (err,user) => {
       if (err) { return done(err) } //ошибка обработки
       if (!user) { return done(null, false) } //ничего не нашёл
-    const bcrypt = require('bcrypt');     
-    const tmp = bcrypt.hashSync(passwordHash, user.salt)
-    if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
-      return done(null, user)
+
+    //const bcrypt = require('bcrypt');     
+    //const tmp = bcrypt.hashSync(passwordHash, user.salt)
+    //if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
+
+const result = bcrypt.compareSync(passwordHash, user.passwordHash);
+if (result) {
+  return done(null, user)
+} else {
+  return done(null, false)
+}
+
+      //return done(null, user)
   });
 }));
 

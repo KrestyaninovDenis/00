@@ -25,9 +25,10 @@ router.post('/api/signin', function(req, res, next) {
             res.json ({error:"Неверный логин или пароль",status:'error'});
             return res;
         }
-        //req.login(user, next);
-        res.status (200);
-        res.json ({data:user,status:'OK'})
+        req.login(user, function(err) {
+            res.status (200);
+            res.json ({data:user,status:'OK'});
+        })
     })(req, res, next);
 });
 // Создание объявления
@@ -36,7 +37,7 @@ router.post('/api/advertisements', async (req, res) => {
         const createADV = await bd.createAdvertisement(req.body)
         res.status (200);
         //----
-        if (req.isAuthenticated || req.isAuthenticated()) {
+        if (req.isAuthenticated && req.isAuthenticated()) {
             res.json (req.user)
         }
         else {
