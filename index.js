@@ -27,13 +27,13 @@ passport.use('local', new LocalStrategy({
       return done(null, user)
   });
 }));
-//
+
 passport.serializeUser(function (user, cb) {
-    cb(null, user.email)
+    cb(null, user._id)
 })
-passport.deserializeUser(function (email, cb) {
+passport.deserializeUser(function (_id, cb) {
   const UserModule = require('./connectingBD/CONNECT/index').User;
-  UserModule.findOne({ email:email }, function (err, user) {
+  UserModule.findById(_id, function (err, user) {
       if (err) { return cb(err) }
       cb(null, user)
     })
