@@ -61,7 +61,7 @@ router.post('/api/advertisements/:id', async (req, res) => {
     try {
         //const RRR = ({_id:req.params.id})
         //const ADV = await bd.findAdvertisement(RRR)
-        const AdvertisementModule = require('./CONNECT/index').Advertisement;
+        const AdvertisementModule = require('../connectingBD/CONNECT/index').Advertisement;
         const createADV = AdvertisementModule.findByIdAndUpdate(req.params.id, req.body)
         
         res.status (200);
