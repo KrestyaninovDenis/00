@@ -20,8 +20,12 @@ router.post('/api/signup', async (req, res) => {
 router.post('/api/signin', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
-        if (!user) { return res.redirect('/login'); }
-        res.json (user)
+        if (!user) { 
+            res.status (404);
+            res.json ({error:"Неверный логин или пароль",status:'error'});
+            return res.redirect('/api/signin'); 
+        }
+        res.json ({data:user,status:'OK'})
         req.login(user, next);
     })(req, res, next);
 });
