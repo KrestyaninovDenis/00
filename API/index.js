@@ -35,8 +35,8 @@ router.post('/api/signin', function(req, res, next) {
 router.post('/api/advertisements', async (req, res) => {
     try {
         if (req.isAuthenticated && req.isAuthenticated()) {
+            req.body.userId = req.user._id
             const createADV = await bd.createAdvertisement(req.body)
-            createADV.userId = req.user._id
             res.status (200);
             res.json (createADV);
         }
