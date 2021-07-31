@@ -42,18 +42,6 @@ router.post('/api/advertisements', async (req, res) => {
     }
 });
 // Поиск объявления (для всех)
-router.get('/api/advertisements', async (req, res) => {
-    try {
-        const ADV = await bd.findAdvertisement(req.body)
-        res.status (200);
-        res.json ({data:ADV,status:'OK'});
-    }
-    catch {
-        res.status (404);
-        res.json ({error:"email занят",status:'error'});
-    }
-});
-// Поиск объявления (для всех)
 router.get('/api/advertisements/:id', async (req, res) => {
     try {
         const RRR = ({ 
@@ -68,6 +56,23 @@ router.get('/api/advertisements/:id', async (req, res) => {
         res.json ({error:"email занят",status:'error'});
     }
 });
+// Поиск объявления (для всех)
+router.get('/api/advertisements', async (req, res) => {
+    try {
+        const ADV = await bd.findAdvertisement(req.body)
+        res.status (200);
+        res.json ({data:ADV,status:'OK'});
+    }
+    catch {
+        res.status (404);
+        res.json ({error:"email занят",status:'error'});
+    }
+});
+
+
+
+
+
 
 
 
