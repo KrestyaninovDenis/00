@@ -16,7 +16,6 @@ const createUser = async (data) => {
         const UserModule = require('./CONNECT/index').User;
         const user = await UserModule.create(data);
         return user;
-      }
     }
     catch (err) {
       throw err;
