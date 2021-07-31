@@ -62,7 +62,7 @@ const findUser = async (email, passwordHash, done) => {
   }
 };
 
-  function findUser (email, passwordHash, done) {
+  function findUser1 (email, passwordHash, done) {
     const UserModule = require('./CONNECT/index').User;
     UserModule.findOne({ email:email }, (err,user) => {
       if (err) { return done(err) } //ошибка обработки
