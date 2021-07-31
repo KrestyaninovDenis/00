@@ -30,7 +30,7 @@ router.post('/api/signin', function(req, res, next) {
     })(req, res, next);
 });
 
-router.push('/api/advertisements', async (req, res) => {
+router.post('/api/advertisements', async (req, res) => {
     try {
         const createADV = await bd.createAdvertisement(req.body)
         res.status (200);
