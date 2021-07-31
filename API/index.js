@@ -57,7 +57,7 @@ router.get('/api/advertisements', async (req, res) => {
     }
 });
 // Редактирование объявления (проверка хозяина объявления)
-router.post('/api/advertisements/:id', async (req, res) => {
+router.get('/api/advertisement/:id', async (req, res) => {
     try {
         //const RRR = ({_id:req.params.id})
         //const ADV = await bd.findAdvertisement(RRR)
