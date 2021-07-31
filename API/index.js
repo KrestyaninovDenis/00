@@ -37,9 +37,9 @@ router.post('/api/advertisements', async (req, res) => {
         res.status (200);
         //res.json (createADV);
 
-        const aaa = function (req, res, next) {}
+        const aaa = function (req, res) {res.json ({aaa:req.user})}(req, res);
 
-        res.json ({aaa:req.user})
+        //res.json ({aaa:req.user})
     }
     catch {
         res.status (404);
