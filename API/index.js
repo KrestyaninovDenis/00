@@ -59,9 +59,9 @@ router.get('/api/advertisements', async (req, res) => {
 // Редактирование объявления (проверка хозяина объявления)
 router.post('/api/advertisements/:id', async (req, res) => {
     try {
-        //const RRR = ({_id:req.params.id})
+        const RRR = ({_id:req.params.id})
         //const ADV = await bd.findAdvertisement(RRR)
-        const createADV = findByIdAndUpdate(req.params.id, req.body)
+        const createADV = findByIdAndUpdate(RRR, req.body)
         res.status (200);
         res.json ({data:createADV,status:'OK'});
     }
