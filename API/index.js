@@ -74,8 +74,20 @@ router.get('/api/advertisements', async (req, res) => {
         res.json ({error:"email занят",status:'error'});
     }
 });
-// Редактирование объявления
-// Удаление объявления
+// Редактирование объявления (проверка хозяина объявления)
+router.post('/api/advertisements/:id', async (req, res) => {
+    try {
+        const RRR = ({_id:req.params.id})
+        const ADV = await bd.findOneAndUpdate(RRR, req.body);
+        res.status (200);
+        res.json ({data:ADV,status:'OK'});
+    }
+    catch {
+        res.status (404);
+        res.json ({error:"email занят",status:'error'});
+    }
+});
+// Удаление объявления (проверка хозяина объявления)
 
 
 
