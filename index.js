@@ -20,7 +20,7 @@ passport.use('local', new LocalStrategy({
 
 
   
-bd.findUser(email, passwordHash, done)
+bd.findUser()
 
 /*
     function (email, passwordHash, done) {
