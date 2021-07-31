@@ -44,10 +44,11 @@ router.post('/api/advertisements', async (req, res) => {
 // Поиск объявления (для всех)
 router.get('/api/advertisements/:id', async (req, res) => {
     try {
-        const RRR = req.params//"id": "610510330b59160012f2daa5"
+        const RRR = req.params.id//"id": "610510330b59160012f2daa5"
+        const rr1 = ({_id:RRR})
         //const ADV = await bd.findAdvertisement(RRR)
         res.status (200);
-    res.json (RRR)
+    res.json (rr1)
         //res.json ({data:ADV,status:'OK'});
     }
     catch {
