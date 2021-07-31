@@ -80,10 +80,11 @@ tags - значение в БД должно включать все иском�
 */
 const findAdvertisement = async (params) => {
     try{
-  
+      if (!params._id) {
       params.shortText = {$regex: new RegExp(params.shortText)};
       params.description = {$regex: new RegExp(params.description)};
       params.isDeleted = false;
+      }
       const AdvertisementModule = require('./CONNECT/index').Advertisement;
       const advertisements = await AdvertisementModule.find(params);
       return advertisements;
