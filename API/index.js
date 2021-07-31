@@ -27,8 +27,7 @@ router.post('/api/signin', function(req, res, next) {
         }
         //req.login(user, next);
         res.status (200);
-        //res.json ({data:user,status:'OK'})
-        res.json ({ user: req.user })
+        res.json ({data:user,status:'OK'})
     })(req, res, next);
 });
 // Создание объявления
@@ -36,7 +35,8 @@ router.post('/api/advertisements', async (req, res) => {
     try {
         const createADV = await bd.createAdvertisement(req.body)
         res.status (200);
-        res.json (createADV);
+        //res.json (createADV);
+        res.json ({aaa:req.user})
     }
     catch {
         res.status (404);
