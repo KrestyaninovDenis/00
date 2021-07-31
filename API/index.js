@@ -41,7 +41,7 @@ router.post('/api/advertisements', async (req, res) => {
         res.json ("ошибка создания объявления");
     }
 });
-// Поиск объявления (для всех)
+// Поиск объявления по ID (для всех)
 router.get('/api/advertisements/:id', async (req, res) => {
     try {
         const RRR = ({_id:req.params.id})
