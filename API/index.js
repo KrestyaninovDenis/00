@@ -25,7 +25,7 @@ router.post('/api/signin', function(req, res, next) {
             res.json ({error:"Неверный логин или пароль",status:'error'});
             return res;
         }
-        req.login(user, next);
+        //req.login(user, next);
         res.status (200);
         res.json ({data:user,status:'OK'})
     })(req, res, next);
