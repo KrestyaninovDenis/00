@@ -35,9 +35,9 @@ const advertisementSchema = new Schema({
         default: [], 
     },
     userId: {
-        type: Schema.Types.ObjectId,
+        type: String,
     //    required: true,
-    //    default: '', 
+        default: "", 
     },
     createdAt: {
         type: Date, 

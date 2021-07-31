@@ -25,14 +25,14 @@ passport.use('local', new LocalStrategy({
     //const bcrypt = require('bcrypt');     
     //const tmp = bcrypt.hashSync(passwordHash, user.salt)
     //if (user.passwordHash !== tmp) { return done(null, false); } //неверный пароль
-/*
-const result = bcrypt.compareSync(passwordHash, user.passwordHash);
-if (result) {
+
+const resul = bcrypt.compareSync(passwordHash, user.passwordHash);
+if (resul) {
   return done(null, user)
 } else {
   return done(null, false)
 }
-*/
+
       return done(null, user)
   });
 }));
