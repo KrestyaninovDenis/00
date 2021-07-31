@@ -35,11 +35,15 @@ router.post('/api/advertisements', async (req, res) => {
     try {
         const createADV = await bd.createAdvertisement(req.body)
         res.status (200);
+        //----
+        if (req.isAuthenticated || req.isAuthenticated()) {
+            res.json (req.user)
+        }
+        else {
+            res.json (createADV);
+        }
+
         //res.json (createADV);
-
-        const aaa = function (req, res) {res.json ({aaa:req.user})}(req, res);
-
-        //res.json ({aaa:req.user})
     }
     catch {
         res.status (404);
@@ -71,7 +75,8 @@ router.get('/api/advertisements', async (req, res) => {
         res.json ({error:"email занят",status:'error'});
     }
 });
-
+// Редактирование объявления
+// Удаление объявления
 
 
 
