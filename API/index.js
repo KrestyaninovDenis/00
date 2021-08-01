@@ -60,6 +60,13 @@ router.post('/api/advertisements/:id', async (req, res) => {
     try {
         if (req.isAuthenticated && req.isAuthenticated()) {
             const ADV = await bd.findAdvertisement( {_id:req.params.id} )
+            console.log ('----------------')
+            console.log (ADV)
+            console.log ('----------------')
+            console.log (ADV.userId)
+            console.log ('----------------')
+            console.log (req.user._id)
+            console.log ('----------------')
                 if (ADV.userId == req.user._id) {
                     const ACON = require('../connectingBD/CONNECT/index').Advertisement;
                     const createA = await ACON.findOneAndUpdate( {_id:req.params.id} , req.body, {new: true}, function(err, result){
