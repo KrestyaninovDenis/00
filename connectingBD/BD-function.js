@@ -58,11 +58,12 @@ const createAdvertisement = async (req, res) => {
       req.body.userId = req.user._id
       const AdvertisementModule = require('./CONNECT/index').Advertisement;
       const advertisement = await AdvertisementModule.create(dataA);
+      return advertisement;
       }
       else {
       const advertisement = 'нужна идентификация'
-      }
       return advertisement;
+      }
     }
     catch {
       //обработка ошибок
