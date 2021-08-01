@@ -59,19 +59,23 @@ router.get('/api/advertisements', async (req, res) => {
 // Редактирование объявления (проверка хозяина объявления)
 router.post('/api/advertisements/:id', async (req, res) => {
     try {
-        const RRR = ({_id:req.params.id})
-        //const ADV = await bd.findAdvertisement(RRR)
-        const {id} = req.params;
-        const AdvModule = require('../connectingBD/CONNECT/index').Advertisement;
-        const createADV = await AdvModule.findIdAndUpdate(id, req.body, {new: true}, function(err, result){
-            if(err) return console.log(err);
-            console.log(result);
-            return result
-        });
-            
-        
-        res.status (200);
-        res.json ({data:createADV,status:'OK'});
+        if (req.isAuthenticated && req.isAuthenticated()) {
+            const RRR = ({_id:req.params.id})
+            const AdvModul = require('../connectingBD/CONNECT/index').Advertisement;
+            const ADV = await bd.findAdvertisement(RRR)
+                if (ADV.userId = req.user._id) {
+                    const createA = await AdvModul.findOneAndUpdate(RRR, req.body, {new: true}, function(err, result){
+                    if(err) return console.log(err);
+                    console.log(result);
+                    return result
+                    });
+                    res.status (200);
+                    res.json ({data:createA,status:'OK'});
+                }
+        }
+        else {
+            res.json ('нужна идентификация');
+        }
     }
     catch {
         res.status (404);
