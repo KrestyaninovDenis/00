@@ -72,6 +72,9 @@ router.post('/api/advertisements/:id', async (req, res) => {
                     res.status (200);
                     res.json ({data:createA,status:'OK'});
                 }
+                else {
+                    res.json ('создал не этот пользователь');
+                }
         }
         else {
             res.json ('нужна идентификация');
