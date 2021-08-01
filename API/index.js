@@ -63,15 +63,19 @@ router.post('/api/advertisements/:id', async (req, res) => {
                 if (ADV.userId == req.user._id) {
                     const ACON = require('../connectingBD/CONNECT/index').Advertisement;
                     const createA = await ACON.findOneAndUpdate(RRR, req.body, {new: true}, function(err, result){
-                    if(err) return console.log(err);
+                    //if(err) return console.log(err);
                     return result
                     });
                     res.status (200);
                     res.json ({data:createA,status:'OK'});
                 }
-                else { res.json ('создал не этот пользователь'); }
+                else { 
+                    res.json ('создал не этот пользователь'); 
+                }
         }
-        else { res.json ('нужна идентификация'); }
+        else { 
+            res.json ('нужна идентификация'); 
+        }
     }
     catch {
         res.status (404);
