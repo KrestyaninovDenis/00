@@ -59,7 +59,8 @@ router.get('/api/advertisements/:id', async (req, res) => {
 router.post('/api/advertisements/:id', async (req, res) => {
     try {
         if (req.isAuthenticated && req.isAuthenticated()) {
-            const ADV = await bd.findAdvertisement( {_id:req.params.id} )
+            const ACON = require('../connectingBD/CONNECT/index').Advertisement;
+            const ADV = await ACON.findOne( {_id:req.params.id} )
             console.log ('----------------')
             console.log (ADV)
             console.log ('----------------')
