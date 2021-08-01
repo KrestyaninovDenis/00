@@ -61,13 +61,6 @@ router.post('/api/advertisements/:id', async (req, res) => {
         if (req.isAuthenticated && req.isAuthenticated()) {
             const ACON = require('../connectingBD/CONNECT/index').Advertisement;
             const ADV = await ACON.findOne( {_id:req.params.id} )
-            console.log ('----------------')
-            console.log (ADV)
-            console.log ('----------------')
-            console.log (ADV.userId)
-            console.log ('----------------')
-            console.log (req.user._id)
-            console.log ('----------------')
                 if (ADV.userId == req.user._id) {
                     const ACON = require('../connectingBD/CONNECT/index').Advertisement;
                     const createA = await ACON.findOneAndUpdate( {_id:req.params.id} , req.body, {new: true}, function(err, result){
@@ -107,7 +100,33 @@ router.post('/api/advertisements', async (req, res) => {
     }
 });
 // Удаление объявления (проверка хозяина объявления)
-
+router.post('/api/delete/:id', async (req, res) => {
+    try {
+        if (req.isAuthenticated && req.isAuthenticated()) {
+            const ACON = require('../connectingBD/CONNECT/index').Advertisement;
+            const ADV = await ACON.findOne( {_id:req.params.id} )
+                if (ADV.userId == req.user._id) {
+                    const ACON = require('../connectingBD/CONNECT/index').Advertisement;
+                    const createA = await ACON.findOneAndUpdate( {_id:req.params.id} , { isDeleted:true }, {new: true}, function(err, result){
+                    if(err) return console.log(err);
+                    return result
+                    });
+                    res.status (200);
+                    res.json ({data:createA,status:'OK'});
+                }
+                else { 
+                    res.json ('создал не этот пользователь'); 
+                }
+        }
+        else { 
+            res.json ('нужна идентификация'); 
+        }
+    }
+    catch {
+        res.status (404);
+        res.json ({error:"ошибка редактирования",status:'error'});
+    }
+});
 
 
 
