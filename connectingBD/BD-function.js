@@ -1,6 +1,7 @@
 const express   = require ('express');
 const app       = express();
 const bcrypt    = require('bcrypt');
+const passport = require('passport');
 
 /*
 1.1.1 Функция "Создание пользователя"
@@ -51,10 +52,16 @@ const advertisement = await Advertisement.create(data);
 
 Результатом работы функции должен быть Promise, который резолвится с объектом модели Advertisement.
 */
-const createAdvertisement = async (dataA) => {
+const createAdvertisement = async (req, res) => {
     try{
+      if (req.isAuthenticated && req.isAuthenticated()) {
+      req.body.userId = req.user._id
       const AdvertisementModule = require('./CONNECT/index').Advertisement;
       const advertisement = await AdvertisementModule.create(dataA);
+      }
+      else {
+      const advertisement = 'нужна идентификация'
+      }
       return advertisement;
     }
     catch {

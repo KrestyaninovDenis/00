@@ -46,8 +46,7 @@ router.get('/api/advertisements', async (req, res) => {
 // Поиск объявления по ID (для всех)
 router.get('/api/advertisements/:id', async (req, res) => {
     try {
-        const RRR = ({_id:req.params.id})
-        const ADV = await bd.findAdvertisement(RRR)
+        const ADV = await bd.findAdvertisement( {_id:req.params.id} )
         res.status (200);
         res.json ({data:ADV,status:'OK'});
     }
@@ -88,15 +87,9 @@ router.post('/api/advertisements/:id', async (req, res) => {
 // Создание объявления (для идентифицированных)
 router.post('/api/advertisements', async (req, res) => {
     try {
-        if (req.isAuthenticated && req.isAuthenticated()) {
-            req.body.userId = req.user._id
-            const createADV = await bd.createAdvertisement(req.body)
-            res.status (200);
-            res.json (createADV);
-        }
-        else {
-            res.json ('нужна идентификация');
-        }
+        const createADV = await bd.createAdvertisement(req, res)
+        res.status (200);
+        res.json (createADV);
     }
     catch {
         res.status (404);
