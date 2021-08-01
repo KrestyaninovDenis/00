@@ -31,6 +31,18 @@ router.post('/api/signin', function(req, res, next) {
         })
     })(req, res, next);
 });
+// Поиск объявления (для всех)
+router.get('/api/advertisements', async (req, res) => {
+    try {
+        const ADV = await bd.findAdvertisement(req.body)
+        res.status (200);
+        res.json ({data:ADV,status:'OK'});
+    }
+    catch {
+        res.status (404);
+        res.json ({error:"ошибка поиска",status:'error'});
+    }
+});
 // Поиск объявления по ID (для всех)
 router.get('/api/advertisements/:id', async (req, res) => {
     try {
@@ -44,18 +56,6 @@ router.get('/api/advertisements/:id', async (req, res) => {
         res.json ({error:"ошибка поиска по ID",status:'error'});
     }
 });
-// Поиск объявления (для всех)
-router.get('/api/advertisements', async (req, res) => {
-    try {
-        const ADV = await bd.findAdvertisement(req.body)
-        res.status (200);
-        res.json ({data:ADV,status:'OK'});
-    }
-    catch {
-        res.status (404);
-        res.json ({error:"ошибка поиска",status:'error'});
-    }
-});
 // Редактирование объявления (проверка хозяина объявления)
 router.post('/api/advertisements/:id', async (req, res) => {
     try {
@@ -63,7 +63,7 @@ router.post('/api/advertisements/:id', async (req, res) => {
             const RRR = ({_id:req.params.id})
             const AdvModul = require('../connectingBD/CONNECT/index').Advertisement;
             const ADV = await bd.findAdvertisement(RRR)
-                if (ADV.userId = req.user._id) {
+                if (ADV.userId == req.user._id) {
                     const createA = await AdvModul.findOneAndUpdate(RRR, req.body, {new: true}, function(err, result){
                     if(err) return console.log(err);
                     console.log(result);
