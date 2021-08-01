@@ -62,7 +62,7 @@ router.post('/api/advertisements/:id', async (req, res) => {
             const ADV = await bd.findAdvertisement( {_id:req.params.id} )
                 if (ADV.userId == req.user._id) {
                     const ACON = require('../connectingBD/CONNECT/index').Advertisement;
-                    const createA = await ACON.findOneAndUpdate(req.params.id, req.body, {new: true}, function(err, result){
+                    const createA = await ACON.findOneAndUpdate( {_id:req.params.id} , req.body, {new: true}, function(err, result){
                     if(err) return console.log(err);
                     return result
                     });
