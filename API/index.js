@@ -1,8 +1,8 @@
-const express = require('express');
-const app = express();
-const router = express.Router();
-const bd = require ('../connectingBD/BD-function');
-const passport = require('passport');
+//const express   = require('express');
+//const app       = express();
+const router    = express.Router();
+const bd        = require ('../connectingBD/BD-function');
+const passport  = require('passport');
 
 // Регистрация пользователя
 router.post('/api/signup', async (req, res) => { 
@@ -59,25 +59,19 @@ router.get('/api/advertisements/:id', async (req, res) => {
 router.post('/api/advertisements/:id', async (req, res) => {
     try {
         if (req.isAuthenticated && req.isAuthenticated()) {
-            const RRR = ({_id:req.params.id})
-            const AdvModul = require('../connectingBD/CONNECT/index').Advertisement;
-            const ADV = await bd.findAdvertisement(RRR)
+            const ADV = await bd.findAdvertisement( {_id:req.params.id} )
                 if (ADV.userId == req.user._id) {
-                    const createA = await AdvModul.findOneAndUpdate(RRR, req.body, {new: true}, function(err, result){
+                    const ACON = require('../connectingBD/CONNECT/index').Advertisement;
+                    const createA = await ACON.findOneAndUpdate(RRR, req.body, {new: true}, function(err, result){
                     if(err) return console.log(err);
-                    console.log(result);
                     return result
                     });
                     res.status (200);
                     res.json ({data:createA,status:'OK'});
                 }
-                else {
-                    res.json ('создал не этот пользователь');
-                }
+                else { res.json ('создал не этот пользователь'); }
         }
-        else {
-            res.json ('нужна идентификация');
-        }
+        else { res.json ('нужна идентификация'); }
     }
     catch {
         res.status (404);
@@ -93,9 +87,7 @@ router.post('/api/advertisements', async (req, res) => {
             res.status (200);
             res.json (createADV);
         }
-        else {
-            res.json ('нужна идентификация');
-        }
+        else { res.json ('нужна идентификация'); }
     }
     catch {
         res.status (404);
