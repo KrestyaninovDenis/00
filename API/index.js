@@ -87,9 +87,15 @@ router.post('/api/advertisements/:id', async (req, res) => {
 // Создание объявления (для идентифицированных)
 router.post('/api/advertisements', async (req, res) => {
     try {
-        const createADV = await bd.createAdvertisement(req, res)
-        res.status (200);
-        res.json (createADV);
+        if (req.isAuthenticated && req.isAuthenticated()) {
+            req.body.userId = req.user._id
+            const createADV = await bd.createAdvertisement(req.body)
+            res.status (200);
+            res.json (createADV);
+        }
+        else {
+            res.json ('нужна идентификация');
+        }
     }
     catch {
         res.status (404);
